@@ -76,7 +76,7 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
   );
   const [history, setHistory] = useState<Bead[][]>([]);
   const [copied, setCopied] = useState(false);
-  const [origin, setOrigin] = useState(process.env.NEXT_PUBLIC_SITE_URL ?? "");
+  const [origin, setOrigin] = useState((process.env.NEXT_PUBLIC_SITE_URL ?? "").trim());
   const svgRef = useRef<SVGSVGElement>(null);
   const { addItem } = useCart();
 

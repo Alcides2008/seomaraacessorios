@@ -41,10 +41,18 @@ const greatVibes = localFont({
   weight: "400",
 });
 
+// valor colado no Vercel pode trazer espaços/quebras de linha: limpa e, se inválido, ignora
+function siteUrl(): URL {
+  try {
+    const u = new URL((process.env.NEXT_PUBLIC_SITE_URL ?? "").trim());
+    return new URL(u.origin);
+  } catch {
+    return new URL("http://localhost:3000");
+  }
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  ),
+  metadataBase: siteUrl(),
   title: {
     default: "Siomara Acessórios — Pulseiras & acessórios personalizados",
     template: "%s · Siomara Acessórios",
