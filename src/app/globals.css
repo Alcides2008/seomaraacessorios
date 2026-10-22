@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/* ============================================================
+   SIOMARA ACESSÓRIOS — "Sticker Club"
+   Rosa-choque, contornos pretos e sombras duras como autocolantes,
+   doodles de laço/coração/✦ (como nas fotos da loja), missangas com letras.
+   (Os nomes dos tokens vêm da base: "gold" = rosa de acento.)
+   ============================================================ */
+
+@theme {
+  /* ---- Cores da marca ---- */
+  --color-ink: #1f1420; /* contorno dos autocolantes / texto */
+  --color-charcoal: #2e1c2f; /* superfícies escuras */
+  --color-cream: #fff5f8; /* papel rosado (fundo) */
+  --color-sand: #ffe3ee; /* rosa algodão-doce */
+  --color-champagne: #ffc6dc; /* rosa chiclete claro */
+  --color-gold: #ff4f9a; /* ROSA-CHOQUE — acento principal */
+  --color-gold-deep: #d62a78; /* rosa-choque escuro (texto / hover) */
+  --color-muted: #7d6577; /* texto secundário */
+  --color-line: #f5d3e1; /* bordas suaves */
+  --color-pearl: #ffffff; /* missanga branca */
+  --color-lilac: #cdb6ff; /* estrelas lilás */
+  --color-sky: #a6dcff; /* estrelas azuis */
+  --color-butter: #fff0a6; /* amarelo manteiga */
+  --color-mint: #bff2d6; /* menta */
+  --color-peach: #ffd2b8; /* pêssego */
+
+  /* ---- Tipografia ---- */
+  --font-sans: var(--font-nunito), ui-rounded, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-hand: var(--font-caveat), "Comic Sans MS", cursive;
+  --font-script: var(--font-greatvibes), "Snell Roundhand", cursive;
+
+  /* ---- Cadência de animação ---- */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@layer base {
+/* Base ------------------------------------------------------- */
+:root {
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--background);
+  /* grão de papel, como o fundo do logótipo */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .3 0 0 0 0 .4 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Títulos: Fraunces macia e um pouco "torta" ----------------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 72;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+
+}
+
+/* Seleção de texto ------------------------------------------ */
+::selection {
+  background: var(--color-champagne);
+  color: var(--color-ink);
+}
+
+/* Scrollbar em missanga -------------------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-champagne);
+  border-radius: 999px;
+  border: 2px solid var(--color-cream);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* Utilitários de marca -------------------------------------- */
+@layer utilities {
+  /*
+   * Sobretítulos: em vez de maiúsculas espaçadas (estilo luxo), a Siomara
+   * "escreve à mão", como nos cartões das pulseiras.
+   * shortcut: !important sobrepõe os text-xs/uppercase herdados dos componentes base.
+   */
+  .tracking-luxe {
+    font-family: var(--font-hand);
+    text-transform: none !important;
+    letter-spacing: 0;
+    font-size: 1.35rem !important;
+    line-height: 1.1;
+    font-weight: 600;
+  }
+  /* autocolante: contorno preto + sombra dura */
+  .sticker {
+    border: 2px solid var(--color-ink);
+    box-shadow: 4px 4px 0 var(--color-ink);
+  }
+  .sticker-lg {
+    border: 2.5px solid var(--color-ink);
+    box-shadow: 7px 7px 0 var(--color-ink);
+  }
+  .font-hand {
+    font-family: var(--font-hand);
+  }
+  /* container central padrão do site */
+  .container-siomara {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-siomara {
+      padding-inline: 2rem;
+    }
+  }
+  /* fio de missangas (divisor decorativo) */
+  .bead-divider {
+    height: 14px;
+    background-image: radial-gradient(
+      circle at 7px 7px,
+      var(--color-champagne) 5px,
+      transparent 5.5px
+    );
+    background-size: 22px 14px;
+    background-repeat: repeat-x;
+  }
+}

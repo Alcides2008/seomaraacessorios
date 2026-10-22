@@ -1,0 +1,39 @@
+rules_version = '2';
+
+// Regras do Firestore da Siomara Acessórios (projeto próprio, separado da Djeyone).
+// Colar em: Firebase Console → Firestore Database → Regras → Publicar.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Só estas contas mexem no catálogo e veem todas as encomendas.
+    // Manter igual a src/config/admins.ts. Email verificado = entrar com Google.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ['siomaramartinho3@gmail.com', 'alcideslafamilia@gmail.com'];
+    }
+
+    // Catálogo e conteúdo: todos leem, só o ADM escreve
+    match /products/{id}   { allow read: if true; allow write: if isAdmin(); }
+    match /categories/{id} { allow read: if true; allow write: if isAdmin(); }
+    match /content/{id}    { allow read: if true; allow write: if isAdmin(); }
+
+    // Encomendas: qualquer cliente cria (com ou sem conta); cada um vê as suas; o ADM gere tudo
+    match /orders/{id} {
+      allow create: if request.resource.data.status == 'Aguarda pagamento'
+        && request.resource.data.total is number
+        && request.resource.data.items is list
+        && (request.resource.data.uid == null
+            || (request.auth != null && request.resource.data.uid == request.auth.uid));
+      allow read: if isAdmin()
+        || (request.auth != null && resource.data.uid == request.auth.uid);
+      allow update, delete: if isAdmin();
+    }
+
+    // Perfil de cada cliente: só o próprio (e o ADM para consulta)
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+      allow read: if isAdmin();
+    }
+  }
+}
