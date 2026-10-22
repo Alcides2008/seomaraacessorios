@@ -52,13 +52,13 @@ export function ProductCard({
   };
 
   // inclinação "de autocolante" estável por produto
-  const tilt = (Number(product.id) || slug.length) % 2 ? "hover:rotate-[1.2deg]" : "hover:-rotate-[1.2deg]";
+  const tilt = "";
 
   return (
     <Link
       href={`/produto/${slug}`}
       className={cn(
-        "group block rounded-[1.6rem] border-2 border-ink bg-white p-2.5 shadow-[4px_4px_0_var(--color-ink)] transition-all duration-300 ease-premium hover:-translate-y-1 hover:shadow-[7px_7px_0_var(--color-ink)]",
+        "group block rounded-[1.6rem] border-2 border-ink bg-white p-2.5 shadow-[4px_4px_0_var(--color-shadow)] transition-all duration-300 ease-premium hover:-translate-y-1 hover:shadow-[7px_7px_0_var(--color-shadow)]",
         tilt,
         className,
       )}
@@ -102,7 +102,7 @@ export function ProductCard({
         </div>
 
         {/* preço em autocolante */}
-        <span className="absolute -bottom-0.5 right-2 rotate-[-6deg] rounded-full border-2 border-ink bg-butter px-3 py-1 text-sm font-black text-ink shadow-[2px_2px_0_var(--color-ink)] transition-transform group-hover:rotate-0">
+        <span className="absolute -bottom-0.5 right-2 rotate-[-6deg] rounded-full border-2 border-ink bg-butter px-3 py-1 text-sm font-black text-ink shadow-[2px_2px_0_var(--color-shadow)] transition-transform group-hover:rotate-0">
           {formatPrice(price)}
         </span>
       </div>

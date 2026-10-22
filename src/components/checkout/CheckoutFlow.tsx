@@ -136,7 +136,7 @@ export function CheckoutFlow() {
             initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
-            className="mx-auto max-w-lg rounded-[2rem] border-[2.5px] border-ink bg-white p-7 text-center shadow-[8px_8px_0_var(--color-ink)] md:p-10"
+            className="mx-auto max-w-lg rounded-[2rem] border-[2.5px] border-ink bg-white p-7 text-center shadow-[8px_8px_0_var(--color-shadow)] md:p-10"
           >
             <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-ink bg-gold">
               <Check className="h-8 w-8" />
@@ -234,7 +234,7 @@ export function CheckoutFlow() {
                 disabled={i > step}
                 className={cn(
                   "flex items-center gap-2 rounded-full border-2 border-ink px-3 py-1.5 text-sm font-black transition-colors",
-                  i === step ? "bg-gold shadow-[3px_3px_0_var(--color-ink)]" : i < step ? "bg-mint" : "bg-white text-ink/40",
+                  i === step ? "bg-gold shadow-[3px_3px_0_var(--color-shadow)]" : i < step ? "bg-mint" : "bg-white text-ink/40",
                 )}
               >
                 <span className="flex h-5 w-5 items-center justify-center rounded-full border-2 border-ink bg-white text-[11px]">
@@ -249,7 +249,7 @@ export function CheckoutFlow() {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_380px]">
           {/* Formulário */}
-          <div className="rounded-[2rem] border-2 border-ink bg-white p-6 shadow-[6px_6px_0_var(--color-ink)] md:p-8">
+          <div className="rounded-[2rem] border-2 border-ink bg-white p-6 shadow-[6px_6px_0_var(--color-shadow)] md:p-8">
             {step === 0 && (
               <div className="flex flex-col gap-5">
                 <Field
@@ -322,7 +322,7 @@ export function CheckoutFlow() {
                     aria-pressed={payment === id}
                     className={cn(
                       "flex items-center gap-4 rounded-2xl border-2 border-ink p-4 text-left transition-all",
-                      payment === id ? "bg-sand shadow-[3px_3px_0_var(--color-ink)]" : "bg-white hover:bg-cream",
+                      payment === id ? "bg-sand shadow-[3px_3px_0_var(--color-shadow)]" : "bg-white hover:bg-cream",
                     )}
                   >
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-ink bg-white">
@@ -385,7 +385,7 @@ export function CheckoutFlow() {
 
           {/* Resumo */}
           <aside className="h-fit lg:sticky lg:top-28">
-            <div className="rounded-[2rem] border-2 border-ink bg-white p-6 shadow-[6px_6px_0_var(--color-ink)]">
+            <div className="rounded-[2rem] border-2 border-ink bg-white p-6 shadow-[6px_6px_0_var(--color-shadow)]">
               <h2 className="font-display text-2xl">O seu pedido</h2>
               <ul className="mt-5 flex flex-col gap-4">
                 {lines.map((l) => (

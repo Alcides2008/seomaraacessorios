@@ -33,7 +33,7 @@ export function InstagramFeed() {
               <Link
                 href={siteConfig.social.instagram}
                 aria-label="Abrir Instagram"
-                className="group relative block aspect-square overflow-hidden rounded-2xl border-2 border-ink shadow-[3px_3px_0_var(--color-ink)] transition-transform hover:-rotate-2"
+                className="group relative block aspect-square overflow-hidden rounded-2xl border-2 border-ink shadow-[3px_3px_0_var(--color-shadow)] transition-transform hover:-rotate-2"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-premium group-hover:scale-110"

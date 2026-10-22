@@ -159,7 +159,7 @@ export function CatalogView({
                 href={c.slug ? `/loja/${c.slug}` : "/loja"}
                 className={cn(
                   "shrink-0 rounded-full border-2 border-ink px-4 py-2 text-sm font-black transition-all",
-                  isOn ? "bg-gold shadow-[3px_3px_0_var(--color-ink)]" : "bg-white hover:-translate-y-0.5 hover:bg-sand",
+                  isOn ? "bg-gold shadow-[3px_3px_0_var(--color-shadow)]" : "bg-white hover:-translate-y-0.5 hover:bg-sand",
                 )}
               >
                 {c.name}
@@ -177,7 +177,7 @@ export function CatalogView({
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-2 text-sm font-black shadow-[3px_3px_0_var(--color-ink)] lg:hidden"
+              className="flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-2 text-sm font-black shadow-[3px_3px_0_var(--color-shadow)] lg:hidden"
             >
               <SlidersHorizontal className="h-4 w-4" />
               Filtros
@@ -193,7 +193,7 @@ export function CatalogView({
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value as SortKey)}
-                className="cursor-pointer appearance-none rounded-full border-2 border-ink bg-white px-4 py-2 pr-9 text-sm font-black shadow-[3px_3px_0_var(--color-ink)] focus:outline-none focus:ring-4 focus:ring-gold/40"
+                className="cursor-pointer appearance-none rounded-full border-2 border-ink bg-white px-4 py-2 pr-9 text-sm font-black shadow-[3px_3px_0_var(--color-shadow)] focus:outline-none focus:ring-4 focus:ring-gold/40"
               >
                 {sortOptions.map((o) => (
                   <option key={o.value} value={o.value}>
@@ -312,7 +312,7 @@ function AtelierCard() {
   return (
     <Link
       href="/criar"
-      className="group relative flex flex-col justify-between overflow-hidden rounded-[1.6rem] border-2 border-ink bg-linear-to-br from-gold via-champagne to-lilac p-5 shadow-[4px_4px_0_var(--color-ink)] transition-all hover:-translate-y-1 hover:rotate-1 hover:shadow-[7px_7px_0_var(--color-ink)]"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-[1.6rem] border-2 border-ink bg-linear-to-br from-gold via-champagne to-lilac p-5 shadow-[4px_4px_0_var(--color-shadow)] transition-all hover:-translate-y-1 hover:rotate-1 hover:shadow-[7px_7px_0_var(--color-shadow)]"
     >
       <SparkleDoodle size={34} className="absolute right-3 top-3 transition-transform group-hover:rotate-45" />
       <span className="font-hand text-2xl font-bold">não encontrou?</span>

@@ -26,7 +26,7 @@ export function ProductGallery({ images }: { images: string[] }) {
             aria-label={`Imagem ${i + 1}`}
             className={`h-16 w-16 shrink-0 rounded-xl border-2 border-ink bg-cover bg-center transition-all ${
               active === i
-                ? "-rotate-3 shadow-[3px_3px_0_var(--color-ink)] ring-4 ring-gold/50"
+                ? "-rotate-3 shadow-[3px_3px_0_var(--color-shadow)] ring-4 ring-gold/50"
                 : "opacity-70 hover:opacity-100"
             }`}
             style={{ backgroundImage: g }}
@@ -36,7 +36,7 @@ export function ProductGallery({ images }: { images: string[] }) {
 
       {/* Imagem principal */}
       <div
-        className="relative aspect-square flex-1 cursor-zoom-in overflow-hidden rounded-[2rem] border-[2.5px] border-ink bg-sand shadow-[7px_7px_0_var(--color-ink)]"
+        className="relative aspect-square flex-1 cursor-zoom-in overflow-hidden rounded-[2rem] border-[2.5px] border-ink bg-sand shadow-[7px_7px_0_var(--color-shadow)]"
         onMouseEnter={() => setZoom(true)}
         onMouseLeave={() => setZoom(false)}
         onMouseMove={onMove}

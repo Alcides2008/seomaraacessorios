@@ -1,29 +1,31 @@
 @import "tailwindcss";
 
 /* ============================================================
-   SIOMARA ACESSÓRIOS — "Sticker Club"
-   Rosa-choque, contornos pretos e sombras duras como autocolantes,
-   doodles de laço/coração/✦ (como nas fotos da loja), missangas com letras.
+   SIOMARA ACESSÓRIOS — "Sticker Club", versão boutique
+   Rosas, creme e ameixa; contornos finos cor de ameixa e sombras rosadas
+   (sem arco-íris nem sombras pretas, para não parecer loja de brinquedos).
    (Os nomes dos tokens vêm da base: "gold" = rosa de acento.)
    ============================================================ */
 
 @theme {
   /* ---- Cores da marca ---- */
-  --color-ink: #1f1420; /* contorno dos autocolantes / texto */
-  --color-charcoal: #2e1c2f; /* superfícies escuras */
-  --color-cream: #fff5f8; /* papel rosado (fundo) */
-  --color-sand: #ffe3ee; /* rosa algodão-doce */
-  --color-champagne: #ffc6dc; /* rosa chiclete claro */
-  --color-gold: #ff4f9a; /* ROSA-CHOQUE — acento principal */
-  --color-gold-deep: #d62a78; /* rosa-choque escuro (texto / hover) */
-  --color-muted: #7d6577; /* texto secundário */
-  --color-line: #f5d3e1; /* bordas suaves */
-  --color-pearl: #ffffff; /* missanga branca */
-  --color-lilac: #cdb6ff; /* estrelas lilás */
-  --color-sky: #a6dcff; /* estrelas azuis */
-  --color-butter: #fff0a6; /* amarelo manteiga */
-  --color-mint: #bff2d6; /* menta */
-  --color-peach: #ffd2b8; /* pêssego */
+  --color-ink: #3b2230; /* ameixa — contornos e texto */
+  --color-charcoal: #4a2a3b; /* superfícies escuras */
+  --color-cream: #fff8f6; /* papel creme rosado (fundo) */
+  --color-sand: #fbe7ec; /* rosa pó */
+  --color-champagne: #f6cfdb; /* rosa claro */
+  --color-gold: #ea5f93; /* rosa da marca — acento principal */
+  --color-gold-deep: #c13a6f; /* rosa profundo (texto / hover) */
+  --color-muted: #806674; /* texto secundário */
+  --color-line: #f1dae2; /* bordas suaves */
+  --color-pearl: #ffffff; /* conta branca */
+  --color-shadow: #f0b9cb; /* sombra rosada dos cartões */
+  /* tons de apoio: todos da família do rosa/creme (nomes antigos mantidos) */
+  --color-lilac: #ecdcf1; /* lavanda muito clara */
+  --color-sky: #f8e3ea; /* blush */
+  --color-butter: #fcefe4; /* champanhe */
+  --color-mint: #f9ece7; /* nude */
+  --color-peach: #fbe1df; /* pêssego rosado */
 
   /* ---- Tipografia ---- */
   --font-sans: var(--font-nunito), ui-rounded, system-ui, sans-serif;
@@ -34,6 +36,25 @@
   /* ---- Cadência de animação ---- */
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* letreiros em movimento: animação CSS (corre na GPU, não no JavaScript) */
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-marquee-reverse: marquee 30s linear infinite reverse;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation: none;
+  }
 }
 
 @layer base {
@@ -55,8 +76,6 @@ html {
 
 body {
   background-color: var(--background);
-  /* grão de papel, como o fundo do logótipo */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .3 0 0 0 0 .4 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   color: var(--foreground);
   font-family: var(--font-sans);
 }
@@ -67,8 +86,8 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 72;
+  font-weight: 620;
+  font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 72;
   letter-spacing: -0.035em;
   line-height: 0.98;
 }
@@ -115,11 +134,11 @@ h4 {
   /* autocolante: contorno preto + sombra dura */
   .sticker {
     border: 2px solid var(--color-ink);
-    box-shadow: 4px 4px 0 var(--color-ink);
+    box-shadow: 4px 4px 0 var(--color-shadow);
   }
   .sticker-lg {
     border: 2.5px solid var(--color-ink);
-    box-shadow: 7px 7px 0 var(--color-ink);
+    box-shadow: 7px 7px 0 var(--color-shadow);
   }
   .font-hand {
     font-family: var(--font-hand);

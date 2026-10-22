@@ -41,7 +41,7 @@ export function AdminDashboard() {
           <Link
             key={c.label}
             href={c.href}
-            className="rounded-[1.6rem] border-2 border-ink bg-white p-6 shadow-[5px_5px_0_var(--color-ink)] transition-transform odd:-rotate-1 even:rotate-1 hover:rotate-0"
+            className="rounded-[1.6rem] border-2 border-ink bg-white p-6 shadow-[5px_5px_0_var(--color-shadow)] transition-transform"
           >
             <c.icon className="h-6 w-6 text-gold" />
             <p className="mt-4 font-display text-3xl font-black text-ink">

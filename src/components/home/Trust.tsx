@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { BeadWord } from "@/components/ui/Beads";
@@ -47,18 +46,14 @@ function Band({ reverse, className }: { reverse?: boolean; className: string }) 
   const row = [...WORDS, ...WORDS];
   return (
     <div className={`overflow-hidden border-y-2 border-ink py-3 ${className}`}>
-      <motion.div
-        className="flex w-max items-center gap-8"
-        animate={{ x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-      >
+      <div className={`flex w-max items-center gap-8 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}>
         {row.map((w, i) => (
           <span key={i} className="flex items-center gap-8 whitespace-nowrap font-display text-2xl font-black md:text-3xl">
             {w}
             <span aria-hidden>✦</span>
           </span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -84,10 +79,10 @@ export function Trust() {
           {STEPS.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.1}>
               <div
-                className={`relative h-full rounded-[2rem] border-2 border-ink p-7 shadow-[6px_6px_0_var(--color-ink)] ${s.bg} ${i % 2 ? "md:translate-y-6 md:rotate-1" : "md:-rotate-1"}`}
+                className={`relative h-full rounded-[2rem] border-2 border-ink p-7 shadow-[6px_6px_0_var(--color-shadow)] ${s.bg} ${i % 2 ? "md:translate-y-6" : ""}`}
               >
                 <span className="absolute -right-3 -top-4">{s.doodle}</span>
-                <span className="font-display text-7xl font-black leading-none text-white [-webkit-text-stroke:2.5px_var(--color-ink)]">
+                <span className="font-script text-7xl leading-none text-gold-deep">
                   {s.n}
                 </span>
                 <h3 className="mt-3 text-3xl">{s.title}</h3>

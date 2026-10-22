@@ -52,7 +52,7 @@ export function PaymentInfo({
 
   if (method === "entrega") {
     return (
-      <p className="rounded-[1.6rem] border-2 border-ink bg-white shadow-[5px_5px_0_var(--color-ink)] p-4 text-sm text-muted">
+      <p className="rounded-[1.6rem] border-2 border-ink bg-white shadow-[5px_5px_0_var(--color-shadow)] p-4 text-sm text-muted">
         Pague em numerário no momento da entrega. Combinamos os detalhes
         consigo por WhatsApp.
       </p>

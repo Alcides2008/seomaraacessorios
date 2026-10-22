@@ -22,8 +22,8 @@ export default async function CriarPage({
 
   return (
     <main className="relative flex-1 overflow-hidden pb-16 pt-8 md:pt-12">
-      <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-champagne/60 blur-3xl" />
-      <div className="pointer-events-none absolute -right-24 top-64 h-80 w-80 rounded-full bg-lilac/40 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-[radial-gradient(closest-side,var(--color-champagne),transparent)]" />
+      <div className="pointer-events-none absolute -right-24 top-64 h-80 w-80 rounded-full bg-[radial-gradient(closest-side,var(--color-lilac),transparent)]" />
 
       <Container className="relative">
         <header className="mb-10 flex flex-col items-start gap-4 md:mb-14">

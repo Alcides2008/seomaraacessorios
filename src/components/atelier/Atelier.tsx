@@ -244,7 +244,7 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
                 className={cn(
                   "flex items-center gap-3 rounded-2xl border-2 border-ink p-3 text-left transition-all",
                   d.type === t.id
-                    ? "bg-gold shadow-[3px_3px_0_var(--color-ink)]"
+                    ? "bg-gold shadow-[3px_3px_0_var(--color-shadow)]"
                     : "bg-white hover:-translate-y-0.5 hover:bg-sand",
                 )}
               >
@@ -356,7 +356,7 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
                 className={cn(
                   "flex flex-col gap-2 rounded-2xl border-2 border-ink p-3 text-left transition-all",
                   d.preset === pr.id && !d.custom
-                    ? "bg-sand shadow-[3px_3px_0_var(--color-ink)]"
+                    ? "bg-sand shadow-[3px_3px_0_var(--color-shadow)]"
                     : "bg-white hover:-translate-y-0.5",
                 )}
               >
@@ -394,7 +394,7 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
                 }
                 className={cn(
                   "rounded-full border-2 border-ink px-4 py-2 text-sm font-black transition-all",
-                  d.charm === c.id ? "bg-gold shadow-[3px_3px_0_var(--color-ink)]" : "bg-white hover:bg-sand",
+                  d.charm === c.id ? "bg-gold shadow-[3px_3px_0_var(--color-shadow)]" : "bg-white hover:bg-sand",
                 )}
               >
                 {c.label}
@@ -600,7 +600,7 @@ function Swatches({
           title={o.label}
           className={cn(
             "h-10 w-10 rounded-full border-2 border-ink transition-transform hover:scale-110",
-            value === o.id && "scale-110 shadow-[3px_3px_0_var(--color-ink)] ring-4 ring-gold/50",
+            value === o.id && "scale-110 shadow-[3px_3px_0_var(--color-shadow)] ring-4 ring-gold/50",
           )}
           style={{ background: o.hex }}
         />

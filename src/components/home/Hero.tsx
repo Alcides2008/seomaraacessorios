@@ -61,18 +61,9 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden pb-20 pt-8 md:pb-28 md:pt-14">
-      {/* fundo: caderno quadriculado + manchas de cor */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-70"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--color-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-line) 1px, transparent 1px)",
-          backgroundSize: "34px 34px",
-          maskImage: "radial-gradient(ellipse at 50% 40%, #000 30%, transparent 75%)",
-        }}
-      />
-      <div className="pointer-events-none absolute -left-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-champagne/70 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 top-40 h-[28rem] w-[28rem] rounded-full bg-lilac/50 blur-3xl" />
+      {/* fundo: manchas de cor suaves */}
+      <div className="pointer-events-none absolute -left-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(closest-side,var(--color-champagne),transparent)]" />
+      <div className="pointer-events-none absolute -right-32 top-40 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(closest-side,var(--color-lilac),transparent)]" />
 
       {FLOATERS.map((s, i) => (
         <motion.span
@@ -170,7 +161,7 @@ export function Hero() {
             transition={{ duration: 0.9, ease: EASE_PREMIUM, delay: 0.2 }}
             className="sticker-lg overflow-hidden rounded-[2.2rem] bg-white"
           >
-            <PiecePreview design={design} className="block h-auto w-full" />
+            <PiecePreview design={design} animate={false} className="block h-auto w-full" />
           </motion.div>
 
           {/* separadores de peça */}
@@ -185,7 +176,7 @@ export function Hero() {
                 }}
                 className={cn(
                   "rounded-full border-2 border-ink px-3.5 py-1.5 text-xs font-black transition-all",
-                  type === t.id ? "bg-gold shadow-[3px_3px_0_var(--color-ink)]" : "bg-white hover:bg-sand",
+                  type === t.id ? "bg-gold shadow-[3px_3px_0_var(--color-shadow)]" : "bg-white hover:bg-sand",
                 )}
               >
                 {t.label}

@@ -28,7 +28,7 @@ export function PromoBanner() {
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <div className="relative grid items-center gap-10 overflow-hidden rounded-[2.5rem] border-[2.5px] border-ink bg-linear-to-br from-lilac via-champagne to-gold p-8 shadow-[8px_8px_0_var(--color-ink)] md:grid-cols-2 md:p-14">
+        <div className="relative grid items-center gap-10 overflow-hidden rounded-[2.5rem] border-[2.5px] border-ink bg-linear-to-br from-lilac via-champagne to-gold p-8 shadow-[8px_8px_0_var(--color-shadow)] md:grid-cols-2 md:p-14">
           <SparkleDoodle size={46} className="absolute right-6 top-6" />
 
           <div className="relative z-10">
@@ -64,7 +64,7 @@ export function PromoBanner() {
                 whileHover={{ rotate: 0, scale: 1.05, zIndex: 10 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 200, damping: 18, delay: i * 0.12 }}
-                className="absolute w-[56%] rounded-xl border-2 border-ink bg-white p-2.5 pb-9 shadow-[5px_5px_0_var(--color-ink)]"
+                className="absolute w-[56%] rounded-xl border-2 border-ink bg-white p-2.5 pb-9 shadow-[5px_5px_0_var(--color-shadow)]"
                 style={{ left: p.x, top: p.y }}
               >
                 <div className="aspect-square rounded-md bg-cover bg-center" style={{ backgroundImage: `url("${p.src}")` }} />

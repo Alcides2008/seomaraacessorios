@@ -257,7 +257,7 @@ function Dashboard({ user }: { user: AuthUser }) {
           {isAdminEmail(user.email) && user.emailVerified && (
             <Link
               href="/admin"
-              className="flex items-center gap-2 rounded-full border-2 border-ink bg-gold px-4 py-1.5 text-sm font-black shadow-[3px_3px_0_var(--color-ink)]"
+              className="flex items-center gap-2 rounded-full border-2 border-ink bg-gold px-4 py-1.5 text-sm font-black shadow-[3px_3px_0_var(--color-shadow)]"
             >
               Painel ADM ✦
             </Link>

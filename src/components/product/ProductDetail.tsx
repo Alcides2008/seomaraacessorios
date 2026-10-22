@@ -83,7 +83,7 @@ export function ProductDetail({
 
       {/* Preço em autocolante */}
       <div className="mt-5 flex items-center gap-3">
-        <span className="rotate-[-3deg] rounded-full border-2 border-ink bg-butter px-5 py-1.5 font-display text-2xl font-black text-ink shadow-[3px_3px_0_var(--color-ink)]">
+        <span className="rotate-[-3deg] rounded-full border-2 border-ink bg-butter px-5 py-1.5 font-display text-2xl font-black text-ink shadow-[3px_3px_0_var(--color-shadow)]">
           {formatPrice(product.price)}
         </span>
         {product.compareAtPrice && (
@@ -102,7 +102,7 @@ export function ProductDetail({
 
       {/* ---------- Personalização ---------- */}
       {fields.length > 0 && (
-        <div className="mt-8 rounded-[1.6rem] border-2 border-ink bg-white p-5 shadow-[5px_5px_0_var(--color-ink)]">
+        <div className="mt-8 rounded-[1.6rem] border-2 border-ink bg-white p-5 shadow-[5px_5px_0_var(--color-shadow)]">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="text-2xl">Personalize</h2>
             <span className="font-hand text-xl text-gold-deep">feito com o seu nome ✦</span>
@@ -206,7 +206,7 @@ export function ProductDetail({
                   title={v.value}
                   className={cn(
                     "h-10 w-10 rounded-full border-2 border-ink transition-transform hover:scale-110",
-                    isSel && "scale-110 shadow-[3px_3px_0_var(--color-ink)] ring-4 ring-gold/50",
+                    isSel && "scale-110 shadow-[3px_3px_0_var(--color-shadow)] ring-4 ring-gold/50",
                   )}
                   style={{ backgroundColor: v.hex }}
                 />

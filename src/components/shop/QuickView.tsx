@@ -67,7 +67,7 @@ function QuickViewInner({
         role="dialog"
         aria-modal="true"
         aria-label={product.name}
-        className="relative z-10 grid max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-[2rem] border-[2.5px] border-ink bg-cream shadow-[8px_8px_0_var(--color-ink)] md:grid-cols-2"
+        className="relative z-10 grid max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-[2rem] border-[2.5px] border-ink bg-cream shadow-[8px_8px_0_var(--color-shadow)] md:grid-cols-2"
         initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         exit={{ opacity: 0, scale: 0.9, rotate: 2 }}
@@ -108,7 +108,7 @@ function QuickViewInner({
         {/* Info */}
         <div className="flex flex-col overflow-y-auto p-6 md:p-8">
           <h2 className="pr-10 text-3xl text-ink">{product.name}</h2>
-          <span className="mt-4 w-fit rotate-[-3deg] rounded-full border-2 border-ink bg-butter px-4 py-1 font-display text-xl font-black shadow-[3px_3px_0_var(--color-ink)]">
+          <span className="mt-4 w-fit rotate-[-3deg] rounded-full border-2 border-ink bg-butter px-4 py-1 font-display text-xl font-black shadow-[3px_3px_0_var(--color-shadow)]">
             {formatPrice(product.price)}
           </span>
           <p className="mt-5 text-sm font-semibold leading-relaxed text-ink/70">{product.description}</p>

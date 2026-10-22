@@ -6,11 +6,11 @@ type Size = "sm" | "md" | "lg";
 
 const variants: Record<Variant, string> = {
   primary:
-    "border-2 border-ink bg-gold text-ink shadow-[4px_4px_0_var(--color-ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--color-ink)] active:translate-x-1 active:translate-y-1 active:shadow-none",
+    "border-2 border-ink bg-gold text-ink shadow-[4px_4px_0_var(--color-shadow)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--color-shadow)] active:translate-x-1 active:translate-y-1 active:shadow-none",
   gold:
-    "border-2 border-ink bg-butter text-ink shadow-[4px_4px_0_var(--color-ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--color-ink)] active:translate-x-1 active:translate-y-1 active:shadow-none",
+    "border-2 border-ink bg-butter text-ink shadow-[4px_4px_0_var(--color-shadow)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--color-shadow)] active:translate-x-1 active:translate-y-1 active:shadow-none",
   outline:
-    "border-2 border-ink bg-white text-ink shadow-[4px_4px_0_var(--color-ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-sand hover:shadow-[6px_6px_0_var(--color-ink)] active:translate-x-1 active:translate-y-1 active:shadow-none",
+    "border-2 border-ink bg-white text-ink shadow-[4px_4px_0_var(--color-shadow)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-sand hover:shadow-[6px_6px_0_var(--color-shadow)] active:translate-x-1 active:translate-y-1 active:shadow-none",
   ghost: "text-ink hover:bg-ink/5",
 };
 

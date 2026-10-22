@@ -41,7 +41,7 @@ export function CartPage() {
             {/* Linhas */}
             <ul className="flex flex-col gap-4">
               {lines.map((l) => (
-                <li key={l.id} className="flex gap-5 rounded-[1.6rem] border-2 border-ink bg-white p-4 shadow-[4px_4px_0_var(--color-ink)]">
+                <li key={l.id} className="flex gap-5 rounded-[1.6rem] border-2 border-ink bg-white p-4 shadow-[4px_4px_0_var(--color-shadow)]">
                   <Link
                     href={`/produto/${l.product.slug}`}
                     className="h-32 w-24 shrink-0 rounded-xl border-2 border-ink bg-cover bg-center"
@@ -118,7 +118,7 @@ export function CartPage() {
 
             {/* Resumo */}
             <aside className="h-fit lg:sticky lg:top-28">
-              <div className="rounded-[1.6rem] border-2 border-ink bg-white shadow-[5px_5px_0_var(--color-ink)] p-6">
+              <div className="rounded-[1.6rem] border-2 border-ink bg-white shadow-[5px_5px_0_var(--color-shadow)] p-6">
                 <h2 className="font-display text-2xl text-ink">
                   Resumo do pedido
                 </h2>

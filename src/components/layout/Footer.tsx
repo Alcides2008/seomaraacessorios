@@ -16,7 +16,7 @@ const empresaLinks = [
 ];
 
 const social =
-  "flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink bg-white text-ink shadow-[3px_3px_0_var(--color-ink)] transition-transform hover:-translate-y-0.5 hover:rotate-6";
+  "flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink bg-white text-ink shadow-[3px_3px_0_var(--color-shadow)] transition-transform hover:-translate-y-0.5 hover:rotate-6";
 
 export async function Footer() {
   const categories = await getCategories();

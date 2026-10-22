@@ -9,12 +9,12 @@ import { cn } from "@/lib/utils";
 
 // cada categoria é um autocolante de cor diferente, ligeiramente torto
 const TILES = [
-  { bg: "bg-gold", rot: "-rotate-2" },
-  { bg: "bg-butter", rot: "rotate-1" },
-  { bg: "bg-lilac", rot: "-rotate-1" },
-  { bg: "bg-sky", rot: "rotate-2" },
-  { bg: "bg-mint", rot: "-rotate-2" },
-  { bg: "bg-peach", rot: "rotate-1" },
+  { bg: "bg-sand", rot: "" },
+  { bg: "bg-butter", rot: "" },
+  { bg: "bg-lilac", rot: "" },
+  { bg: "bg-sky", rot: "" },
+  { bg: "bg-mint", rot: "" },
+  { bg: "bg-peach", rot: "" },
 ];
 
 export async function CategoryShowcase() {
@@ -38,7 +38,7 @@ export async function CategoryShowcase() {
                 <Link
                   href={`/loja/${c.slug}`}
                   className={cn(
-                    "group block rounded-[2rem] border-2 border-ink p-3 shadow-[5px_5px_0_var(--color-ink)] transition-all duration-300 ease-premium hover:rotate-0 hover:-translate-y-1 hover:shadow-[8px_8px_0_var(--color-ink)]",
+                    "group block rounded-[2rem] border-2 border-ink p-3 shadow-[5px_5px_0_var(--color-shadow)] transition-all duration-300 ease-premium hover:rotate-0 hover:-translate-y-1 hover:shadow-[8px_8px_0_var(--color-shadow)]",
                     t.bg,
                     t.rot,
                   )}
