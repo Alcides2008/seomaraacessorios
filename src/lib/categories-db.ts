@@ -5,7 +5,7 @@ import {
   setDoc,
   deleteDoc,
 } from "firebase/firestore";
-import { db, isFirebaseConfigured } from "@/lib/firebase";
+import { db, isFirebaseConfigured, withTimeout } from "@/lib/firebase";
 import type { Category } from "@/types";
 import { categories as defaultCategories } from "@/config/site";
 
@@ -20,7 +20,7 @@ const sortCats = (l: Category[]) =>
 export async function getCategories(): Promise<Category[]> {
   if (!isFirebaseConfigured) return sortCats(defaultCategories);
   try {
-    const snap = await getDocs(collection(db, COL));
+    const snap = await withTimeout(getDocs(collection(db, COL)));
     if (snap.empty) return sortCats(defaultCategories);
     return sortCats(snap.docs.map((d) => d.data() as Category));
   } catch {

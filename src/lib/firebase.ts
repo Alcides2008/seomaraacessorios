@@ -30,3 +30,14 @@ const app = getApps().length
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
+
+/**
+ * Leituras com alternativa local: se o Firestore não responder a tempo (ex.: no build
+ * do Vercel o SDK fica à espera para sempre), rejeita e quem chama usa os dados locais.
+ */
+export function withTimeout<T>(p: Promise<T>, ms = 4000): Promise<T> {
+  return Promise.race([
+    p,
+    new Promise<T>((_, reject) => setTimeout(() => reject(new Error("Firestore timeout")), ms)),
+  ]);
+}

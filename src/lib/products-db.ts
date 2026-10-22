@@ -5,7 +5,7 @@ import {
   setDoc,
   deleteDoc,
 } from "firebase/firestore";
-import { db, isFirebaseConfigured } from "@/lib/firebase";
+import { db, isFirebaseConfigured, withTimeout } from "@/lib/firebase";
 import type { Product } from "@/types";
 import { products as seedProducts } from "@/data/products";
 
@@ -29,7 +29,7 @@ function clean<T>(obj: T): T {
 export async function getAllProducts(): Promise<Product[]> {
   if (!isFirebaseConfigured) return sortProducts(seedProducts);
   try {
-    const snap = await getDocs(collection(db, COL));
+    const snap = await withTimeout(getDocs(collection(db, COL)));
     if (snap.empty) return sortProducts(seedProducts);
     return sortProducts(snap.docs.map((d) => d.data() as Product));
   } catch {

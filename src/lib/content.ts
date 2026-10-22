@@ -1,5 +1,5 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db, isFirebaseConfigured } from "@/lib/firebase";
+import { db, isFirebaseConfigured, withTimeout } from "@/lib/firebase";
 
 export type HeroSlide = {
   eyebrow: string;
@@ -68,7 +68,7 @@ export const defaultContent: SiteContent = {
 export async function getSiteContent(): Promise<SiteContent> {
   if (!isFirebaseConfigured) return defaultContent;
   try {
-    const snap = await getDoc(doc(db, "content", "site"));
+    const snap = await withTimeout(getDoc(doc(db, "content", "site")));
     if (snap.exists()) {
       const data = snap.data() as Partial<SiteContent>;
       return {
