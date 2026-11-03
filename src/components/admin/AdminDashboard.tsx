@@ -41,10 +41,10 @@ export function AdminDashboard() {
           <Link
             key={c.label}
             href={c.href}
-            className="rounded-[1.6rem] border-2 border-ink bg-white p-6 shadow-[5px_5px_0_var(--color-shadow)] transition-transform"
+            className="rounded-2xl border border-edge bg-white p-6 shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] transition-transform"
           >
             <c.icon className="h-6 w-6 text-gold" />
-            <p className="mt-4 font-display text-3xl font-black text-ink">
+            <p className="mt-4 font-display text-3xl font-semibold text-ink">
               {s.loading ? "…" : c.value}
             </p>
             <p className="text-sm font-bold text-ink/60">

@@ -29,7 +29,7 @@ function PriceInput({
   return (
     <label className="block">
       <span className="text-sm font-bold text-ink/70">{label}</span>
-      <div className="mt-1 flex items-center rounded-2xl border-2 border-ink bg-white focus-within:ring-4 focus-within:ring-gold/40">
+      <div className="mt-1 flex items-center rounded-2xl border border-edge bg-white focus-within:ring-4 focus-within:ring-gold/40">
         <input
           type="number"
           min={0}
@@ -37,7 +37,7 @@ function PriceInput({
           inputMode="numeric"
           value={value}
           onChange={(e) => onChange(Math.max(0, Number(e.target.value) || 0))}
-          className="w-full bg-transparent px-4 py-2.5 text-sm font-black focus:outline-none"
+          className="w-full bg-transparent px-4 py-2.5 text-sm font-semibold focus:outline-none"
         />
         <span className="pr-4 text-xs font-bold text-ink/50">{suffix}</span>
       </div>
@@ -47,7 +47,7 @@ function PriceInput({
 
 function Group({ title, hint, children }: { title: string; hint?: string; children: ReactNode }) {
   return (
-    <section className="rounded-[1.4rem] border-2 border-ink bg-white p-5">
+    <section className="rounded-2xl border border-edge bg-white p-5">
       <h2 className="font-display text-2xl text-ink">{title}</h2>
       {hint && <p className="mt-1 text-xs font-semibold text-ink/60">{hint}</p>}
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{children}</div>
@@ -100,7 +100,7 @@ export function AtelierPricesManager() {
 
   return (
     <div className="max-w-4xl">
-      <h1 className="text-5xl text-ink">Atelier ✦ preços</h1>
+      <h1 className="text-5xl text-ink">Atelier preços</h1>
       <p className="mt-1 text-sm font-semibold text-muted">
         O que cada peça e cada material custam na página “Crie a sua peça”. O preço final é a soma.
       </p>
@@ -140,13 +140,13 @@ export function AtelierPricesManager() {
           <PriceInput label="Montar no modo livre" value={p.freeMode} onChange={(v) => setP({ ...p, freeMode: v })} />
         </Group>
 
-        <section className="rounded-[1.4rem] border-2 border-ink bg-butter p-5">
+        <section className="rounded-2xl border border-edge bg-butter p-5">
           <h2 className="font-display text-2xl">Assim fica</h2>
           <ul className="mt-3 flex flex-col gap-1.5 text-sm font-bold">
             {examples.map((e) => (
               <li key={e.label} className="flex justify-between gap-3">
                 <span>{e.label}</span>
-                <span className="font-black">{formatPrice(designPrice(e.d, p))}</span>
+                <span className="font-semibold">{formatPrice(designPrice(e.d, p))}</span>
               </li>
             ))}
           </ul>

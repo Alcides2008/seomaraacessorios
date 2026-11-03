@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Squiggle } from "@/components/ui/Doodles";
 
 /** Cabeçalho de secção: sobretítulo dourado + título editorial (+ link opcional). */
 export function SectionHeading({
@@ -32,13 +31,12 @@ export function SectionHeading({
     >
       <div className={cn("flex flex-col gap-3", centered && "items-center")}>
         {eyebrow && (
-          <span className="inline-block -rotate-2 rounded-full border-2 border-ink bg-butter px-3 py-0.5 font-hand text-xl font-bold text-ink">
+          <span className="inline-block rounded-full border border-edge bg-butter px-3 py-0.5 font-hand text-xl font-bold text-ink">
             {eyebrow}
           </span>
         )}
         <h2 className="relative text-4xl text-ink md:text-5xl lg:text-6xl">
           {title}
-          <Squiggle className={cn("mt-1 h-3 w-32 text-gold", centered && "mx-auto")} />
         </h2>
         {description && (
           <p className="max-w-xl text-base font-semibold leading-relaxed text-muted">
@@ -50,7 +48,7 @@ export function SectionHeading({
       {link && (
         <Link
           href={link.href}
-          className="group inline-flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-2 text-sm font-black text-ink shadow-[3px_3px_0_var(--color-shadow)] transition-all hover:-translate-y-0.5 hover:bg-gold"
+          className="group inline-flex items-center gap-2 rounded-full border border-edge bg-white px-4 py-2 text-sm font-semibold text-ink shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] transition-all hover:-translate-y-0.5 hover:bg-gold"
         >
           {link.label}
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

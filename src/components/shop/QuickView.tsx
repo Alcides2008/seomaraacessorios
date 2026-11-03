@@ -67,7 +67,7 @@ function QuickViewInner({
         role="dialog"
         aria-modal="true"
         aria-label={product.name}
-        className="relative z-10 grid max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-[2rem] border-[2.5px] border-ink bg-cream shadow-[8px_8px_0_var(--color-shadow)] md:grid-cols-2"
+        className="relative z-10 grid max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-3xl border border-edge bg-cream shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] md:grid-cols-2"
         initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         exit={{ opacity: 0, scale: 0.9, rotate: 2 }}
@@ -76,7 +76,7 @@ function QuickViewInner({
         <button
           onClick={onClose}
           aria-label="Fechar"
-          className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border-2 border-ink bg-white transition-transform hover:rotate-90"
+          className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-edge bg-white transition-transform hover:rotate-90"
         >
           <X className="h-5 w-5" />
         </button>
@@ -84,7 +84,7 @@ function QuickViewInner({
         {/* Galeria */}
         <div className="flex flex-col gap-3 p-4 md:p-5">
           <div
-            className="aspect-square w-full rounded-[1.4rem] border-2 border-ink bg-cover bg-center"
+            className="aspect-square w-full rounded-2xl border border-edge bg-cover bg-center"
             style={{ backgroundImage: gallery[active] }}
           />
           {gallery.length > 1 && (
@@ -95,7 +95,7 @@ function QuickViewInner({
                   onClick={() => setActive(i)}
                   aria-label={`Imagem ${i + 1}`}
                   className={cn(
-                    "h-14 w-14 rounded-xl border-2 border-ink bg-cover bg-center transition-all",
+                    "h-14 w-14 rounded-xl border border-edge bg-cover bg-center transition-all",
                     active === i ? "ring-4 ring-gold/50" : "opacity-70 hover:opacity-100",
                   )}
                   style={{ backgroundImage: g }}
@@ -108,14 +108,14 @@ function QuickViewInner({
         {/* Info */}
         <div className="flex flex-col overflow-y-auto p-6 md:p-8">
           <h2 className="pr-10 text-3xl text-ink">{product.name}</h2>
-          <span className="mt-4 w-fit rotate-[-3deg] rounded-full border-2 border-ink bg-butter px-4 py-1 font-display text-xl font-black shadow-[3px_3px_0_var(--color-shadow)]">
+          <span className="mt-4 w-fit rounded-full border border-edge bg-butter px-4 py-1 font-display text-xl font-semibold shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]">
             {formatPrice(product.price)}
           </span>
           <p className="mt-5 text-sm font-semibold leading-relaxed text-ink/70">{product.description}</p>
 
           {needsName ? (
             <div className="mt-auto pt-7">
-              <p className="mb-3 font-hand text-xl text-gold-deep">Esta peça leva o seu nome ✦</p>
+              <p className="mb-3 font-hand text-xl text-gold-deep">Esta peça leva o seu nome</p>
               <Link href={`/produto/${product.slug}`} className={buttonClasses("primary", "lg", "w-full")}>
                 <Sparkles className="h-4 w-4" />
                 Personalizar
@@ -135,7 +135,7 @@ function QuickViewInner({
                         aria-pressed={selected[group.label] === v.value}
                         title={v.value}
                         className={cn(
-                          "h-8 w-8 rounded-full border-2 border-ink transition-transform hover:scale-110",
+                          "h-8 w-8 rounded-full border border-edge transition-transform hover:scale-110",
                           selected[group.label] === v.value && "ring-4 ring-gold/50",
                         )}
                         style={{ backgroundColor: v.hex }}
@@ -146,7 +146,7 @@ function QuickViewInner({
               ))}
 
               <div className="mt-auto flex items-center gap-3 pt-7">
-                <div className="flex items-center rounded-full border-2 border-ink bg-white">
+                <div className="flex items-center rounded-full border border-edge bg-white">
                   <button
                     onClick={() => setQty((q) => Math.max(1, q - 1))}
                     aria-label="Diminuir"
@@ -154,7 +154,7 @@ function QuickViewInner({
                   >
                     <Minus className="h-4 w-4" />
                   </button>
-                  <span className="w-6 text-center font-black">{qty}</span>
+                  <span className="w-6 text-center font-semibold">{qty}</span>
                   <button
                     onClick={() => setQty((q) => q + 1)}
                     aria-label="Aumentar"
@@ -172,7 +172,7 @@ function QuickViewInner({
 
           <Link
             href={`/produto/${product.slug}`}
-            className="mt-4 text-center text-sm font-black underline-offset-4 hover:text-gold-deep hover:underline"
+            className="mt-4 text-center text-sm font-semibold underline-offset-4 hover:text-gold-deep hover:underline"
           >
             Ver detalhes completos
           </Link>

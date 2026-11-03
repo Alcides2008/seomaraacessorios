@@ -23,12 +23,12 @@ export function Logo({
         width={44}
         height={44}
         priority
-        className="h-10 w-10 rounded-full object-cover ring-1 ring-gold/40 transition-transform duration-500 ease-premium group-hover:rotate-[-8deg] md:h-11 md:w-11"
+        className="h-10 w-10 rounded-full object-cover ring-1 ring-gold/40 transition-transform duration-500 ease-premium md:h-11 md:w-11"
       />
       <span className="flex flex-col leading-none">
         <span
           className={cn(
-            "font-display text-xl font-black italic md:text-2xl",
+            "font-display text-xl font-semibold italic md:text-2xl",
             tone === "dark" ? "text-ink" : "text-cream",
           )}
         >

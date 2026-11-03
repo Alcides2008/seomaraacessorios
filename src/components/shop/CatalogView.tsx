@@ -10,7 +10,6 @@ import { allColors, productHasColor } from "@/lib/product-options";
 import { cn } from "@/lib/utils";
 import { useCategories } from "@/context/CategoriesContext";
 import { buttonClasses } from "@/components/ui/Button";
-import { BowDoodle, SparkleDoodle, Squiggle } from "@/components/ui/Doodles";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumb, type Crumb } from "@/components/ui/Breadcrumb";
 import { ProductCard } from "@/components/product/ProductCard";
@@ -38,12 +37,15 @@ export function CatalogView({
   eyebrow,
   breadcrumb,
   fixedCategory,
+  tagline,
 }: {
   products: Product[];
   title: string;
   eyebrow?: string;
   breadcrumb: Crumb[];
   fixedCategory?: CategorySlug;
+  /** frase da marca em caligrafia (só na loja principal) */
+  tagline?: string;
 }) {
   // limites e listas derivados do conjunto base
   const priceBounds = useMemo(() => {
@@ -131,22 +133,12 @@ export function CatalogView({
   return (
     <main className="flex-1 py-10 md:py-14">
       <Container>
-        <Breadcrumb items={breadcrumb} />
+        {breadcrumb.length > 0 && <Breadcrumb items={breadcrumb} />}
 
-        <div className="relative mt-6">
-          <BowDoodle size={72} className="absolute -top-2 right-0 hidden rotate-12 md:block" />
-          {eyebrow && (
-            <span className="inline-block -rotate-2 rounded-full border-2 border-ink bg-butter px-3 py-0.5 font-hand text-xl font-bold">
-              {eyebrow}
-            </span>
-          )}
-          <h1 className="mt-3 flex items-center gap-3 text-5xl text-ink md:text-7xl">
-            <span className="relative">
-              {title}
-              <Squiggle className="mt-1 h-3 w-40 text-gold" />
-            </span>
-            <SparkleDoodle size={34} className="rotate-12" />
-          </h1>
+        <div className="mt-4">
+          {eyebrow && <span className="font-hand text-gold-deep">{eyebrow}</span>}
+          <h1 className="mt-2 text-4xl text-ink md:text-6xl">{title}</h1>
+          {tagline && <p className="mt-2 font-script text-3xl text-gold-deep md:text-4xl">{tagline}</p>}
         </div>
 
         {/* coleções em chips */}
@@ -156,10 +148,10 @@ export function CatalogView({
             return (
               <Link
                 key={c.slug || "tudo"}
-                href={c.slug ? `/loja/${c.slug}` : "/loja"}
+                href={c.slug ? `/loja/${c.slug}` : "/"}
                 className={cn(
-                  "shrink-0 rounded-full border-2 border-ink px-4 py-2 text-sm font-black transition-all",
-                  isOn ? "bg-gold shadow-[3px_3px_0_var(--color-shadow)]" : "bg-white hover:-translate-y-0.5 hover:bg-sand",
+                  "shrink-0 rounded-full border border-edge px-4 py-2 text-sm font-semibold transition-all",
+                  isOn ? "border-ink bg-ink text-cream" : "bg-white hover:border-ink",
                 )}
               >
                 {c.name}
@@ -168,7 +160,7 @@ export function CatalogView({
           })}
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-b-2 border-dashed border-ink/20 pb-5">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-b border-dashed border-line pb-5">
           <p className="text-sm font-bold text-ink/60">
             {filtered.length} {filtered.length === 1 ? "peça feita" : "peças feitas"} à mão
           </p>
@@ -177,12 +169,12 @@ export function CatalogView({
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-2 text-sm font-black shadow-[3px_3px_0_var(--color-shadow)] lg:hidden"
+              className="flex items-center gap-2 rounded-full border border-edge bg-white px-4 py-2 text-sm font-semibold shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] lg:hidden"
             >
               <SlidersHorizontal className="h-4 w-4" />
               Filtros
               {activeCount > 0 && (
-                <span className="flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-ink bg-gold px-1 text-[10px]">
+                <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-edge bg-gold px-1 text-[10px]">
                   {activeCount}
                 </span>
               )}
@@ -193,7 +185,7 @@ export function CatalogView({
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value as SortKey)}
-                className="cursor-pointer appearance-none rounded-full border-2 border-ink bg-white px-4 py-2 pr-9 text-sm font-black shadow-[3px_3px_0_var(--color-shadow)] focus:outline-none focus:ring-4 focus:ring-gold/40"
+                className="cursor-pointer appearance-none rounded-full border border-edge bg-white px-4 py-2 pr-9 text-sm font-semibold shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] focus:outline-none focus:ring-4 focus:ring-gold/40"
               >
                 {sortOptions.map((o) => (
                   <option key={o.value} value={o.value}>
@@ -217,7 +209,7 @@ export function CatalogView({
           {/* Grelha */}
           <div>
             {filtered.length === 0 ? (
-              <div className="flex flex-col items-center justify-center rounded-[2rem] border-2 border-dashed border-ink/40 bg-white py-20 text-center">
+              <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-edge bg-white py-20 text-center">
                 <p className="font-display text-3xl text-ink">Nada por aqui…</p>
                 <p className="mt-2 font-semibold text-ink/60">
                   Ajuste os filtros — ou crie a peça do zero no Atelier.
@@ -272,7 +264,7 @@ export function CatalogView({
               onClick={() => setDrawerOpen(false)}
             />
             <motion.aside
-              className="absolute left-0 top-0 flex h-full w-[86%] max-w-sm flex-col border-r-2 border-ink bg-cream"
+              className="absolute left-0 top-0 flex h-full w-[86%] max-w-sm flex-col border-r border-edge bg-cream"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
@@ -312,14 +304,13 @@ function AtelierCard() {
   return (
     <Link
       href="/criar"
-      className="group relative flex flex-col justify-between overflow-hidden rounded-[1.6rem] border-2 border-ink bg-linear-to-br from-gold via-champagne to-lilac p-5 shadow-[4px_4px_0_var(--color-shadow)] transition-all hover:-translate-y-1 hover:rotate-1 hover:shadow-[7px_7px_0_var(--color-shadow)]"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-edge bg-linear-to-br from-gold via-champagne to-lilac p-5 shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] transition-all hover:-translate-y-1 hover:shadow-[0_18px_40px_-22px_rgba(59,34,48,0.45)]"
     >
-      <SparkleDoodle size={34} className="absolute right-3 top-3 transition-transform group-hover:rotate-45" />
       <span className="font-hand text-2xl font-bold">não encontrou?</span>
-      <span className="mt-6 font-display text-3xl font-black leading-none md:text-4xl">
+      <span className="mt-6 font-display text-3xl font-semibold leading-none md:text-4xl">
         Crie a sua no Atelier
       </span>
-      <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-2 text-sm font-black">
+      <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-edge bg-white px-4 py-2 text-sm font-semibold">
         <Wand2 className="h-4 w-4" /> Começar
       </span>
     </Link>

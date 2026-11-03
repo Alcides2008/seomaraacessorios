@@ -15,8 +15,7 @@ import { useWishlist } from "@/context/WishlistContext";
 import { getSiteContent, defaultContent } from "@/lib/content";
 
 const navLinks = [
-  { label: "Início", href: "/" },
-  { label: "Loja", href: "/loja", mega: true },
+  { label: "Loja", href: "/", mega: true },
   { label: "Sobre", href: "/sobre" },
   { label: "Contacto", href: "/contacto" },
 ];
@@ -57,27 +56,20 @@ export function Header() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-  const ticker = Array.from({ length: 6 }, () => announcement);
 
   return (
     <>
-      {/* Faixa de anúncio em marquee */}
-      <div className="overflow-hidden border-b-2 border-ink bg-gold text-ink">
-        <div className="flex w-max animate-marquee gap-10 py-1.5">
-          {[...ticker, ...ticker].map((t, i) => (
-            <span key={i} className="whitespace-nowrap text-xs font-black uppercase tracking-wider">
-              ✦ {t}
-            </span>
-          ))}
-        </div>
+      {/* Faixa de anúncio */}
+      <div className="bg-ink px-4 py-2 text-center text-[11px] uppercase tracking-[0.18em] text-cream/90">
+        {announcement}
       </div>
 
       {/* Barra flutuante tipo autocolante */}
       <header className="sticky top-0 z-50 px-3 pt-3" onMouseLeave={() => setMegaOpen(false)}>
         <div
           className={cn(
-            "container-siomara relative flex h-16 items-center justify-between gap-3 rounded-full border-2 border-ink bg-white/95 backdrop-blur-md transition-shadow duration-300 md:h-[4.5rem]",
-            scrolled ? "shadow-[5px_5px_0_var(--color-shadow)]" : "shadow-[3px_3px_0_var(--color-shadow)]",
+            "container-siomara relative flex h-16 items-center justify-between gap-3 rounded-full border border-edge bg-white/95 backdrop-blur-md transition-shadow duration-300 md:h-[4.5rem]",
+            scrolled ? "shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]" : "shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]",
           )}
           style={{ paddingInline: "0.9rem" }}
         >
@@ -99,7 +91,7 @@ export function Header() {
                 href={l.href}
                 onMouseEnter={() => setMegaOpen(!!l.mega)}
                 className={cn(
-                  "flex items-center gap-1 rounded-full px-4 py-2 text-sm font-extrabold transition-colors hover:bg-sand",
+                  "flex items-center gap-1 rounded-full px-4 py-2 text-sm font-semibold transition-colors hover:bg-sand",
                   isActive(l.href) ? "bg-sand text-ink" : "text-ink/70",
                 )}
               >
@@ -114,9 +106,9 @@ export function Header() {
             <Link
               href="/criar"
               onMouseEnter={() => setMegaOpen(false)}
-              className="ml-2 rotate-[-2deg] rounded-full border-2 border-ink bg-butter px-4 py-1.5 text-sm font-black text-ink shadow-[3px_3px_0_var(--color-shadow)] transition-transform hover:rotate-0 hover:scale-105"
+              className="ml-2 rounded-full border border-edge bg-butter px-4 py-1.5 text-sm font-semibold text-ink shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] transition-transform hover:scale-105"
             >
-              Atelier ✦ crie a sua
+              Atelier crie a sua
             </Link>
           </nav>
 
@@ -134,7 +126,7 @@ export function Header() {
             <button
               onClick={openCart}
               aria-label="Abrir carrinho"
-              className="relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-ink bg-gold text-ink transition-transform hover:-rotate-6"
+              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-edge bg-gold text-ink transition-transform"
             >
               <ShoppingBag className="h-[18px] w-[18px]" />
               <CountBadge count={cartCount} />
@@ -182,7 +174,7 @@ function CountBadge({ count }: { count: number }) {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0, opacity: 0 }}
           transition={{ type: "spring", stiffness: 500, damping: 22 }}
-          className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-ink bg-butter px-1 text-[10px] font-black text-ink"
+          className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border border-edge bg-butter px-1 text-[10px] font-semibold text-ink"
         >
           {count}
         </motion.span>

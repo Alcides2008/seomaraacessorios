@@ -20,14 +20,14 @@ export function CartPage() {
     <main className="flex-1 py-10 md:py-14">
       <Container>
         <Breadcrumb
-          items={[{ label: "Início", href: "/" }, { label: "Carrinho" }]}
+          items={[{ label: "Loja", href: "/" }, { label: "Carrinho" }]}
         />
         <h1 className="mt-5 text-5xl text-ink md:text-6xl">
           Carrinho
         </h1>
 
         {count === 0 ? (
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 rounded-[1.6rem] border-2 border-dashed border-ink/30 bg-white py-24 text-center">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-edge bg-white py-24 text-center">
             <ShoppingBag className="h-10 w-10 text-muted/40" strokeWidth={1} />
             <p className="font-display text-xl text-ink">
               O seu carrinho está vazio
@@ -41,10 +41,10 @@ export function CartPage() {
             {/* Linhas */}
             <ul className="flex flex-col gap-4">
               {lines.map((l) => (
-                <li key={l.id} className="flex gap-5 rounded-[1.6rem] border-2 border-ink bg-white p-4 shadow-[4px_4px_0_var(--color-shadow)]">
+                <li key={l.id} className="flex gap-5 rounded-2xl border border-edge bg-white p-4 shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]">
                   <Link
                     href={`/produto/${l.product.slug}`}
-                    className="h-32 w-24 shrink-0 rounded-xl border-2 border-ink bg-cover bg-center"
+                    className="h-32 w-24 shrink-0 rounded-xl border border-edge bg-cover bg-center"
                     style={{ backgroundImage: productCover(l.product) }}
                     aria-label={l.product.name}
                   />
@@ -58,7 +58,7 @@ export function CartPage() {
                         )}
                         <Link
                           href={`/produto/${l.product.slug}`}
-                          className="block font-extrabold text-ink hover:text-gold-deep"
+                          className="block font-semibold text-ink hover:text-gold-deep"
                         >
                           {l.product.name}
                         </Link>
@@ -81,7 +81,7 @@ export function CartPage() {
                     </div>
 
                     <div className="mt-auto flex items-end justify-between pt-4">
-                      <div className="flex items-center rounded-full border-2 border-ink bg-white">
+                      <div className="flex items-center rounded-full border border-edge bg-white">
                         <button
                           onClick={() => updateQty(l.id, l.quantity - 1)}
                           aria-label="Diminuir"
@@ -118,7 +118,7 @@ export function CartPage() {
 
             {/* Resumo */}
             <aside className="h-fit lg:sticky lg:top-28">
-              <div className="rounded-[1.6rem] border-2 border-ink bg-white shadow-[5px_5px_0_var(--color-shadow)] p-6">
+              <div className="rounded-2xl border border-edge bg-white shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] p-6">
                 <h2 className="font-display text-2xl text-ink">
                   Resumo do pedido
                 </h2>
@@ -150,7 +150,7 @@ export function CartPage() {
                 </Link>
                 <Link
                   href="/loja"
-                  className="mt-3 block text-center text-sm font-black underline-offset-4 hover:text-gold-deep hover:underline"
+                  className="mt-3 block text-center text-sm font-semibold underline-offset-4 hover:text-gold-deep hover:underline"
                 >
                   Continuar a comprar
                 </Link>

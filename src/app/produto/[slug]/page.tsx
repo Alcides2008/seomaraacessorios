@@ -47,8 +47,7 @@ export default async function ProdutoPage({
       <Container>
         <Breadcrumb
           items={[
-            { label: "Início", href: "/" },
-            { label: "Loja", href: "/loja" },
+            { label: "Loja", href: "/" },
             { label: category.name, href: `/loja/${category.slug}` },
             { label: product.name },
           ]}

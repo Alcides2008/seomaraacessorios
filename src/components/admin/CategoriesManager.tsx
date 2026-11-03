@@ -21,7 +21,7 @@ const slugify = (s: string) =>
     .replace(/(^-|-$)/g, "");
 
 const inputCls =
-  "mt-1.5 w-full rounded-2xl border-2 border-ink bg-white px-4 py-2.5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40";
+  "mt-1.5 w-full rounded-2xl border border-edge bg-white px-4 py-2.5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40";
 
 const gradientOf = (c1: string, c2: string) =>
   `linear-gradient(135deg, ${c1} 0%, ${c2} 100%)`;
@@ -113,7 +113,7 @@ export function CategoriesManager() {
       </div>
 
       {!seeded && !loading && (
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-[1.6rem] border-2 border-ink bg-butter p-5">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-edge bg-butter p-5">
           <p className="text-sm text-ink">
             As categorias ainda estão no código. Importe-as para a base de dados
             para poder editá-las.
@@ -128,14 +128,14 @@ export function CategoriesManager() {
         </div>
       )}
 
-      <div className="mt-6 overflow-hidden rounded-[1.4rem] border-2 border-ink bg-white">
+      <div className="mt-6 overflow-hidden rounded-2xl border border-edge bg-white">
         {cats.map((c) => (
           <div
             key={c.slug}
             className="flex items-center gap-4 border-b border-line p-3 last:border-b-0"
           >
             <div
-              className="h-12 w-12 shrink-0 rounded-xl border-2 border-ink bg-cover bg-center"
+              className="h-12 w-12 shrink-0 rounded-xl border border-edge bg-cover bg-center"
               style={{ backgroundImage: c.gradient }}
             />
             <div className="min-w-0 flex-1">
@@ -147,14 +147,14 @@ export function CategoriesManager() {
             <button
               onClick={() => setEditing({ ...c })}
               aria-label="Editar"
-              className="flex h-9 w-9 items-center justify-center rounded-[1.4rem] border-2 border-ink bg-white text-muted transition-colors hover:border-ink hover:text-ink"
+              className="flex h-9 w-9 items-center justify-center rounded-2xl border border-edge bg-white text-muted transition-colors hover:border-ink hover:text-ink"
             >
               <Pencil className="h-4 w-4" />
             </button>
             <button
               onClick={() => remove(c)}
               aria-label="Apagar"
-              className="flex h-9 w-9 items-center justify-center rounded-[1.4rem] border-2 border-ink bg-white text-muted transition-colors hover:border-red-400 hover:text-red-500"
+              className="flex h-9 w-9 items-center justify-center rounded-2xl border border-edge bg-white text-muted transition-colors hover:border-red-400 hover:text-red-500"
             >
               <Trash2 className="h-4 w-4" />
             </button>
@@ -286,13 +286,13 @@ function CategoryForm({
               type="color"
               value={colorA}
               onChange={(e) => setColorA(e.target.value)}
-              className="h-10 w-14 cursor-pointer rounded-[1.4rem] border-2 border-ink bg-white"
+              className="h-10 w-14 cursor-pointer rounded-2xl border border-edge bg-white"
             />
             <input
               type="color"
               value={colorB}
               onChange={(e) => setColorB(e.target.value)}
-              className="h-10 w-14 cursor-pointer rounded-[1.4rem] border-2 border-ink bg-white"
+              className="h-10 w-14 cursor-pointer rounded-2xl border border-edge bg-white"
             />
             <div
               className="h-10 flex-1 rounded-sm"

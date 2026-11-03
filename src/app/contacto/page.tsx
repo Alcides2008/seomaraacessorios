@@ -42,7 +42,7 @@ export default function ContactoPage() {
     <main className="flex-1 py-10 md:py-14">
       <Container>
         <Breadcrumb
-          items={[{ label: "Início", href: "/" }, { label: "Contacto" }]}
+          items={[{ label: "Loja", href: "/" }, { label: "Contacto" }]}
         />
         <span className="tracking-luxe mt-5 block text-xs uppercase text-gold">
           Fale connosco

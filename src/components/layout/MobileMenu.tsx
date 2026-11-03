@@ -9,9 +9,8 @@ import { Logo } from "@/components/ui/Logo";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const navLinks = [
-  { label: "Início", href: "/" },
-  { label: "Atelier ✦ crie a sua", href: "/criar" },
-  { label: "Loja", href: "/loja" },
+  { label: "Atelier crie a sua", href: "/criar" },
+  { label: "Loja", href: "/" },
   { label: "Sobre", href: "/sobre" },
   { label: "Contacto", href: "/contacto" },
 ];

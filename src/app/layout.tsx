@@ -6,15 +6,15 @@ import { Footer } from "@/components/layout/Footer";
 import { Providers } from "./providers";
 
 // Fontes auto-hospedadas (sem dependência do Google Fonts no build).
-// Corpo: Nunito — sans arredondada, amigável
-const nunito = localFont({
-  src: "../fonts/nunito.woff2",
-  variable: "--font-nunito",
+// Corpo: Inter — sans neutra e legível
+const inter = localFont({
+  src: "../fonts/inter.woff2",
+  variable: "--font-inter",
   display: "swap",
-  weight: "200 1000",
+  weight: "100 900",
 });
 
-// Títulos: Fraunces — serifada suave, com itálico "torto" e charmoso
+// Títulos: Fraunces — serifada clássica (sem o eixo "suave/torto")
 const fraunces = localFont({
   src: [
     { path: "../fonts/fraunces.woff2", style: "normal" },
@@ -23,14 +23,6 @@ const fraunces = localFont({
   variable: "--font-fraunces",
   display: "swap",
   weight: "100 900",
-});
-
-// Manuscrito: Caveat — como o "Siomara Acessórios" escrito à mão nos cartões
-const caveat = localFont({
-  src: "../fonts/caveat.woff2",
-  variable: "--font-caveat",
-  display: "swap",
-  weight: "400 700",
 });
 
 // Caligrafia: Great Vibes — o "𝒯𝓇𝒶𝓃𝓈𝒻𝑜𝓇𝓂𝒶𝓃𝒹𝑜" da bio do Instagram, mas em texto real
@@ -77,7 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt"
-      className={`${nunito.variable} ${fraunces.variable} ${caveat.variable} ${greatVibes.variable} h-full antialiased`}
+      className={`${inter.variable} ${fraunces.variable} ${greatVibes.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Providers>

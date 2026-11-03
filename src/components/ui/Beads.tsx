@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Motivos da marca: missangas com letras (como as pulseiras da Siomara),
- * estrelas, pérolas, brilho ✦ e o laço do logótipo.
+ * estrelas, pérolas, brilho e o laço do logótipo.
  */
 
 /** Uma missanga redonda com letra. */
@@ -19,7 +19,7 @@ export function LetterBead({
   return (
     <span
       className={cn(
-        "inline-flex shrink-0 items-center justify-center rounded-full bg-pearl font-sans font-extrabold text-ink",
+        "inline-flex shrink-0 items-center justify-center rounded-full bg-pearl font-sans font-semibold text-ink",
         "shadow-[inset_0_-3px_0_rgba(58,31,43,0.10),0_2px_4px_rgba(58,31,43,0.18)]",
         className,
       )}
@@ -79,29 +79,6 @@ export function BeadWord({
   );
 }
 
-/** Brilho de quatro pontas (como no logótipo). */
-export function Sparkle({
-  size = 16,
-  className,
-}: {
-  size?: number;
-  className?: string;
-}) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      aria-hidden
-      className={className}
-    >
-      <path
-        d="M12 0c.6 6.6 5.4 11.4 12 12-6.6.6-11.4 5.4-12 12-.6-6.6-5.4-11.4-12-12C6.6 11.4 11.4 6.6 12 0z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
 
 /** Estrela de missanga (contorno colorido, miolo branco). */
 export function StarBead({
@@ -160,30 +137,3 @@ export function Pearl({
   );
 }
 
-/** Laço (traço simples inspirado no logótipo). */
-export function Bow({
-  size = 48,
-  className,
-}: {
-  size?: number;
-  className?: string;
-}) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 64 64"
-      fill="none"
-      aria-hidden
-      className={className}
-    >
-      <g stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M30 26c-6-9-20-14-22-6-2 7 9 11 22 8" fill="currentColor" fillOpacity=".18" />
-        <path d="M34 26c6-9 20-14 22-6 2 7-9 11-22 8" fill="currentColor" fillOpacity=".18" />
-        <path d="M30 30c-4 8-9 18-13 27l6-2 3 5c3-9 5-19 6-28" fill="currentColor" fillOpacity=".18" />
-        <path d="M34 30c4 8 9 18 13 27l-6-2-3 5c-3-9-5-19-6-28" fill="currentColor" fillOpacity=".18" />
-        <ellipse cx="32" cy="28" rx="4.5" ry="5" fill="currentColor" />
-      </g>
-    </svg>
-  );
-}

@@ -37,14 +37,14 @@ export function CartDrawer() {
           <div className="absolute inset-0 bg-ink/40" onClick={closeCart} />
 
           <motion.aside
-            className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col border-l-2 border-ink bg-cream"
+            className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col border-l border-edge bg-cream"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.4, ease: EASE_PREMIUM }}
           >
             {/* Cabeçalho */}
-            <div className="flex items-center justify-between border-b-2 border-ink px-6 py-5">
+            <div className="flex items-center justify-between border-b border-edge px-6 py-5">
               <span className="font-display text-2xl text-ink">
                 Carrinho ({count})
               </span>
@@ -72,8 +72,8 @@ export function CartDrawer() {
               </div>
             ) : (
               <>
-                <p className="border-b-2 border-ink bg-butter px-6 py-2.5 text-center text-sm font-bold">
-                  ✦ Cada peça é feita à mão depois da encomenda
+                <p className="border-b border-edge bg-butter px-6 py-2.5 text-center text-sm font-bold">
+                  Cada peça é feita à mão depois da encomenda
                 </p>
 
                 {/* Linhas */}
@@ -84,7 +84,7 @@ export function CartDrawer() {
                         <Link
                           href={`/produto/${l.product.slug}`}
                           onClick={closeCart}
-                          className="h-24 w-20 shrink-0 rounded-xl border-2 border-ink bg-cover bg-center"
+                          className="h-24 w-20 shrink-0 rounded-xl border border-edge bg-cover bg-center"
                           style={{ backgroundImage: productCover(l.product) }}
                           aria-label={l.product.name}
                         />
@@ -93,7 +93,7 @@ export function CartDrawer() {
                             <Link
                               href={`/produto/${l.product.slug}`}
                               onClick={closeCart}
-                              className="text-sm font-extrabold text-ink hover:text-gold-deep"
+                              className="text-sm font-semibold text-ink hover:text-gold-deep"
                             >
                               {l.product.name}
                             </Link>
@@ -116,7 +116,7 @@ export function CartDrawer() {
                           )}
 
                           <div className="mt-auto flex items-center justify-between pt-2">
-                            <div className="flex items-center rounded-full border-2 border-ink bg-white">
+                            <div className="flex items-center rounded-full border border-edge bg-white">
                               <button
                                 onClick={() =>
                                   updateQty(l.id, l.quantity - 1)
@@ -150,7 +150,7 @@ export function CartDrawer() {
                 </div>
 
                 {/* Rodapé */}
-                <div className="border-t-2 border-ink px-6 py-5">
+                <div className="border-t border-edge px-6 py-5">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted">Subtotal</span>
                     <span className="text-base text-ink">
@@ -170,7 +170,7 @@ export function CartDrawer() {
                   <Link
                     href="/carrinho"
                     onClick={closeCart}
-                    className="mt-3 block text-center text-sm font-black underline-offset-4 hover:text-gold-deep hover:underline"
+                    className="mt-3 block text-center text-sm font-semibold underline-offset-4 hover:text-gold-deep hover:underline"
                   >
                     Ver carrinho
                   </Link>

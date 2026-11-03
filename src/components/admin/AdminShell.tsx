@@ -22,7 +22,7 @@ const nav = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Produtos", href: "/admin/produtos", icon: Package },
   { label: "Encomendas", href: "/admin/encomendas", icon: ShoppingCart },
-  { label: "Atelier ✦", href: "/admin/atelier", icon: Wand2 },
+  { label: "Atelier", href: "/admin/atelier", icon: Wand2 },
   { label: "Conteúdo", href: "/admin/conteudo", icon: FileText },
   { label: "Categorias", href: "/admin/categorias", icon: Tags },
 ];
@@ -44,7 +44,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
   if (!allowedEmail || !user?.emailVerified) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-4 px-6 py-32 text-center">
-        <span className="-rotate-2 rounded-full border-2 border-ink bg-butter px-3 py-0.5 font-hand text-xl font-bold">
+        <span className=" rounded-full border border-edge bg-butter px-3 py-0.5 font-hand text-xl font-bold">
           área reservada
         </span>
         <h1 className="text-5xl text-ink">Acesso restrito</h1>
@@ -70,8 +70,8 @@ export function AdminShell({ children }: { children: ReactNode }) {
         <div className="flex flex-col gap-8 lg:flex-row">
           {/* Barra lateral */}
           <aside className="lg:w-56 lg:shrink-0">
-            <span className="inline-block -rotate-2 rounded-full border-2 border-ink bg-gold px-3 py-0.5 font-hand text-xl font-bold">
-              Painel ✦ Siomara
+            <span className="inline-block rounded-full border border-edge bg-gold px-3 py-0.5 font-hand text-xl font-bold">
+              Painel Siomara
             </span>
             <nav className="mt-4 flex gap-1 overflow-x-auto lg:flex-col">
               {nav.map(({ label, href, icon: Icon }) => {
@@ -84,9 +84,9 @@ export function AdminShell({ children }: { children: ReactNode }) {
                     key={href}
                     href={href}
                     className={cn(
-                      "flex items-center gap-3 whitespace-nowrap rounded-full border-2 px-4 py-2 text-sm font-black transition-all",
+                      "flex items-center gap-3 whitespace-nowrap rounded-full border-2 px-4 py-2 text-sm font-semibold transition-all",
                       active
-                        ? "border-ink bg-ink text-cream shadow-[3px_3px_0_var(--color-gold)]"
+                        ? "border-ink bg-ink text-cream shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]"
                         : "border-transparent text-ink/70 hover:border-ink hover:bg-white",
                     )}
                   >
@@ -98,7 +98,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
             </nav>
             <Link
               href="/"
-              className="mt-6 hidden items-center gap-2 text-sm font-black text-ink/60 transition-colors hover:text-ink lg:flex"
+              className="mt-6 hidden items-center gap-2 text-sm font-semibold text-ink/60 transition-colors hover:text-ink lg:flex"
             >
               <ArrowLeft className="h-3.5 w-3.5" /> Voltar à loja
             </Link>

@@ -75,7 +75,7 @@ export function OrdersManager() {
       </p>
 
       {!loading && orders.length === 0 && (
-        <div className="mt-8 flex flex-col items-center gap-3 rounded-[1.6rem] border-2 border-dashed border-ink/30 bg-white py-20 text-center">
+        <div className="mt-8 flex flex-col items-center gap-3 rounded-2xl border border-dashed border-edge bg-white py-20 text-center">
           <Package className="h-9 w-9 text-muted/40" strokeWidth={1} />
           <p className="text-sm text-muted">Ainda não há encomendas.</p>
         </div>
@@ -85,7 +85,7 @@ export function OrdersManager() {
         {orders.map((o) => {
           const isOpen = open === o._docId;
           return (
-            <div key={o._docId} className="rounded-[1.4rem] border-2 border-ink bg-white">
+            <div key={o._docId} className="rounded-2xl border border-edge bg-white">
               <button
                 onClick={() => setOpen(isOpen ? null : o._docId)}
                 className="flex w-full items-center gap-4 p-4 text-left"
@@ -108,7 +108,7 @@ export function OrdersManager() {
                 </div>
                 <span
                   className={cn(
-                    "rounded-full border-2 border-ink px-3 py-0.5 text-xs font-black",
+                    "rounded-full border border-edge px-3 py-0.5 text-xs font-semibold",
                     statusColor(o.status),
                   )}
                 >
@@ -126,7 +126,7 @@ export function OrdersManager() {
               </button>
 
               {isOpen && (
-                <div className="border-t-2 border-dashed border-ink/20 p-4">
+                <div className="border-t border-dashed border-line p-4">
                   <div className="grid gap-6 md:grid-cols-2">
                     {/* Itens */}
                     <div>
@@ -155,7 +155,7 @@ export function OrdersManager() {
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-3 border-t-2 border-dashed border-ink/20 pt-2 text-sm">
+                      <div className="mt-3 border-t border-dashed border-line pt-2 text-sm">
                         <div className="flex justify-between text-muted">
                           <span>Entrega</span>
                           <span>{shippingText(o.shipping)}</span>
@@ -183,7 +183,7 @@ export function OrdersManager() {
                           )}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-2 inline-flex items-center gap-2 rounded-full border-2 border-ink bg-mint px-3 py-1 text-sm font-black"
+                          className="mt-2 inline-flex items-center gap-2 rounded-full border border-edge bg-mint px-3 py-1 text-sm font-semibold"
                         >
                           <WhatsAppIcon className="h-4 w-4" /> Falar com a cliente
                         </a>
@@ -199,7 +199,7 @@ export function OrdersManager() {
                       <select
                         value={o.status}
                         onChange={(e) => changeStatus(o, e.target.value)}
-                        className="mt-2 w-full rounded-2xl border-2 border-ink bg-white px-4 py-2.5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
+                        className="mt-2 w-full rounded-2xl border border-edge bg-white px-4 py-2.5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
                       >
                         {STATUSES.map((s) => (
                           <option key={s} value={s}>

@@ -19,7 +19,7 @@ export function FavoritesPage() {
     <main className="flex-1 py-10 md:py-14">
       <Container>
         <Breadcrumb
-          items={[{ label: "Início", href: "/" }, { label: "Favoritos" }]}
+          items={[{ label: "Loja", href: "/" }, { label: "Favoritos" }]}
         />
         <h1 className="mt-5 text-5xl text-ink md:text-6xl">
           Favoritos
@@ -29,7 +29,7 @@ export function FavoritesPage() {
         </p>
 
         {count === 0 ? (
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 rounded-[1.6rem] border-2 border-dashed border-ink/30 bg-white py-24 text-center">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-edge bg-white py-24 text-center">
             <Heart className="h-10 w-10 text-muted/40" strokeWidth={1} />
             <p className="font-display text-xl text-ink">
               Ainda não tem favoritos

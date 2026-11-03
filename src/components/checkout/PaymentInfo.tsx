@@ -16,7 +16,7 @@ function CopyRow({ label, value }: { label: string; value: string }) {
     }
   };
   return (
-    <div className="flex items-center justify-between gap-4 rounded-2xl border-2 border-ink bg-white bg-cream px-4 py-3">
+    <div className="flex items-center justify-between gap-4 rounded-2xl border border-edge bg-white bg-cream px-4 py-3">
       <div>
         <span className="text-xs font-bold text-ink/60">
           {label}
@@ -52,7 +52,7 @@ export function PaymentInfo({
 
   if (method === "entrega") {
     return (
-      <p className="rounded-[1.6rem] border-2 border-ink bg-white shadow-[5px_5px_0_var(--color-shadow)] p-4 text-sm text-muted">
+      <p className="rounded-2xl border border-edge bg-white shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] p-4 text-sm text-muted">
         Pague em numerário no momento da entrega. Combinamos os detalhes
         consigo por WhatsApp.
       </p>

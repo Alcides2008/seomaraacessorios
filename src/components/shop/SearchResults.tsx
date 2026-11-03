@@ -30,7 +30,7 @@ export function SearchResults() {
     <main className="flex-1 py-10 md:py-14">
       <Container>
         <Breadcrumb
-          items={[{ label: "Início", href: "/" }, { label: "Pesquisa" }]}
+          items={[{ label: "Loja", href: "/" }, { label: "Pesquisa" }]}
         />
         <h1 className="mt-5 font-display text-3xl text-ink md:text-4xl">
           Resultados para “{q}”

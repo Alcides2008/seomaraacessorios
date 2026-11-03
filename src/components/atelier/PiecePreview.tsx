@@ -20,7 +20,6 @@ import {
   shapesFor,
   type Shape,
 } from "@/lib/atelier";
-import { BOW_PARTS, PATHS } from "@/components/ui/Doodles";
 
 /**
  * Pré-visualização realista da peça (SVG).
@@ -65,7 +64,7 @@ export function PiecePreview({
     >
       <Defs p={p} />
 
-      {isBracelet ? <CushionScene p={p} /> : <LinenScene p={p} accent={design.accent} />}
+      {isBracelet ? <CushionScene p={p} /> : <LinenScene p={p} />}
 
       {/* fio / cordão */}
       {scene.strands?.map(({ shape }, i) => (
@@ -198,30 +197,11 @@ function CushionScene({ p }: { p: string }) {
   );
 }
 
-function LinenScene({ p, accent }: { p: string; accent: string }) {
-  const doodles: { d: string | string[]; x: number; y: number; s: number; r: number }[] = [
-    { d: BOW_PARTS, x: 52, y: 40, s: 1.6, r: -10 },
-    { d: BOW_PARTS, x: 470, y: 470, s: 1.6, r: 12 },
-    { d: PATHS.heart, x: 470, y: 120, s: 0.6, r: 10 },
-    { d: PATHS.heart, x: 90, y: 330, s: 0.55, r: -12 },
-    { d: PATHS.sparkle, x: 455, y: 260, s: 0.55, r: 0 },
-    { d: PATHS.sparkle, x: 110, y: 470, s: 0.5, r: 0 },
-    { d: PATHS.sparkle, x: 150, y: 150, s: 0.45, r: 0 },
-  ];
+function LinenScene({ p }: { p: string }) {
   return (
     <g>
-      <rect width={VIEW} height={VIEW} fill="#e7e2e1" />
-      <rect width={VIEW} height={VIEW} filter={`url(#${p}-grain)`} opacity="2" />
-      {doodles.map((dd, i) => (
-        <g key={i} transform={`translate(${dd.x} ${dd.y}) rotate(${dd.r}) scale(${dd.s})`}>
-          {(Array.isArray(dd.d) ? dd.d : [dd.d]).map((d) => (
-            <path key={`w${d}`} d={d} fill="#fff" stroke="#fff" strokeWidth="9" strokeLinejoin="round" />
-          ))}
-          {(Array.isArray(dd.d) ? dd.d : [dd.d]).map((d) => (
-            <path key={d} d={d} fill={accent} fillOpacity=".35" stroke={accent} strokeWidth="3" strokeLinejoin="round" />
-          ))}
-        </g>
-      ))}
+      <rect width={VIEW} height={VIEW} fill="#ebe6e4" />
+      <rect width={VIEW} height={VIEW} filter={`url(#${p}-grain)`} />
     </g>
   );
 }

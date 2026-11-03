@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Atelier } from "@/components/atelier/Atelier";
 import { Container } from "@/components/layout/Container";
-import { BeadWord } from "@/components/ui/Beads";
-import { BowDoodle, SparkleDoodle, Squiggle } from "@/components/ui/Doodles";
 
 export const metadata: Metadata = {
   title: "Atelier — crie a sua peça",
@@ -27,22 +25,15 @@ export default async function CriarPage({
 
       <Container className="relative">
         <header className="mb-10 flex flex-col items-start gap-4 md:mb-14">
-          <div className="flex items-center gap-3">
-            <BeadWord word="ATELIER" size={30} gap={2} />
-            <SparkleDoodle size={30} className="rotate-12" />
-          </div>
+          <span className="font-hand text-gold-deep">Atelier Siomara</span>
           <h1 className="max-w-3xl text-5xl text-ink md:text-7xl">
             Crie a sua peça,{" "}
-            <span className="relative inline-block italic text-gold" style={{ WebkitTextStroke: "2px var(--color-ink)" }}>
-              com Arte ✦
-              <Squiggle className="absolute -bottom-2 left-0 h-3 w-full text-ink" />
-            </span>
+            <span className="italic text-gold-deep">com Arte</span>
           </h1>
-          <p className="max-w-xl text-lg font-semibold text-muted">
+          <p className="max-w-xl text-lg text-muted">
             Escolha a peça, escreva o nome e brinque com fios, estrelas, pérolas e pingentes. O que
             vê é o que a Siomara monta à mão para si.
           </p>
-          <BowDoodle size={70} className="absolute right-4 top-0 hidden rotate-12 md:block" />
         </header>
 
         <Atelier initialQuery={query} />

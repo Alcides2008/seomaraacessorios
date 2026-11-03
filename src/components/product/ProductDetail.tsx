@@ -83,7 +83,7 @@ export function ProductDetail({
 
       {/* Preço em autocolante */}
       <div className="mt-5 flex items-center gap-3">
-        <span className="rotate-[-3deg] rounded-full border-2 border-ink bg-butter px-5 py-1.5 font-display text-2xl font-black text-ink shadow-[3px_3px_0_var(--color-shadow)]">
+        <span className=" rounded-full border border-edge bg-butter px-5 py-1.5 font-display text-2xl font-semibold text-ink shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]">
           {formatPrice(product.price)}
         </span>
         {product.compareAtPrice && (
@@ -91,7 +91,7 @@ export function ProductDetail({
             <span className="text-base font-bold text-muted line-through">
               {formatPrice(product.compareAtPrice)}
             </span>
-            <span className="rounded-full border-2 border-ink bg-gold px-2.5 py-0.5 text-xs font-black">
+            <span className="rounded-full border border-edge bg-gold px-2.5 py-0.5 text-xs font-semibold">
               -{discount}%
             </span>
           </>
@@ -102,10 +102,10 @@ export function ProductDetail({
 
       {/* ---------- Personalização ---------- */}
       {fields.length > 0 && (
-        <div className="mt-8 rounded-[1.6rem] border-2 border-ink bg-white p-5 shadow-[5px_5px_0_var(--color-shadow)]">
+        <div className="mt-8 rounded-2xl border border-edge bg-white p-5 shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="text-2xl">Personalize</h2>
-            <span className="font-hand text-xl text-gold-deep">feito com o seu nome ✦</span>
+            <span className="font-hand text-xl text-gold-deep">feito com o seu nome</span>
           </div>
 
           <div className="mt-4 flex flex-col gap-4">
@@ -131,7 +131,7 @@ export function ProductDetail({
                       autoComplete="off"
                       aria-invalid={error}
                       className={cn(
-                        "h-12 w-full rounded-full border-2 bg-sand px-5 font-black uppercase tracking-[0.18em] text-ink placeholder:text-ink/30 focus:bg-white focus:outline-none focus:ring-4 focus:ring-gold/40",
+                        "h-12 w-full rounded-full border-2 bg-sand px-5 font-semibold uppercase tracking-[0.18em] text-ink placeholder:text-ink/30 focus:bg-white focus:outline-none focus:ring-4 focus:ring-gold/40",
                         error ? "border-gold-deep" : "border-ink",
                       )}
                     />
@@ -141,7 +141,7 @@ export function ProductDetail({
                         setNames((n) => ({ ...n, [f.key]: toBeadText((n[f.key] ?? "") + "♥", f.max, f.spaces) }))
                       }
                       aria-label={`Acrescentar coração em ${f.label}`}
-                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-gold text-lg transition-transform hover:rotate-12 hover:scale-110"
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-edge bg-gold text-lg transition-transform hover:scale-110"
                     >
                       ♥
                     </button>
@@ -157,7 +157,7 @@ export function ProductDetail({
           </div>
 
           {/* pré-visualização das letras */}
-          <div className="mt-5 flex min-h-12 flex-col gap-2 rounded-2xl border-2 border-dashed border-ink/25 bg-cream p-3">
+          <div className="mt-5 flex min-h-12 flex-col gap-2 rounded-2xl border border-dashed border-edge bg-cream p-3">
             <span className="text-xs font-bold text-ink/50">Assim fica:</span>
             <AnimatePresence mode="popLayout">
               {fields
@@ -178,7 +178,7 @@ export function ProductDetail({
           {atelierHref && (
             <Link
               href={atelierHref}
-              className="mt-4 inline-flex items-center gap-2 text-sm font-black text-gold-deep underline-offset-4 hover:underline"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-gold-deep underline-offset-4 hover:underline"
             >
               <Wand2 className="h-4 w-4" />
               Quer mudar cores, estrelas e pingentes? Abrir no Atelier
@@ -205,8 +205,8 @@ export function ProductDetail({
                   aria-pressed={isSel}
                   title={v.value}
                   className={cn(
-                    "h-10 w-10 rounded-full border-2 border-ink transition-transform hover:scale-110",
-                    isSel && "scale-110 shadow-[3px_3px_0_var(--color-shadow)] ring-4 ring-gold/50",
+                    "h-10 w-10 rounded-full border border-edge transition-transform hover:scale-110",
+                    isSel && "scale-110 shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] ring-4 ring-gold/50",
                   )}
                   style={{ backgroundColor: v.hex }}
                 />
@@ -215,7 +215,7 @@ export function ProductDetail({
                   key={v.value}
                   onClick={() => setSelected((s) => ({ ...s, [group.label]: v.value }))}
                   className={cn(
-                    "min-w-12 rounded-full border-2 border-ink px-4 py-2 text-sm font-black transition-colors",
+                    "min-w-12 rounded-full border border-edge px-4 py-2 text-sm font-semibold transition-colors",
                     isSel ? "bg-ink text-cream" : "bg-white hover:bg-sand",
                   )}
                 >
@@ -236,7 +236,7 @@ export function ProductDetail({
         <button
           onClick={() => wishlist.toggle(product)}
           className={cn(
-            "flex items-center gap-1.5 rounded-full border-2 border-ink px-3 py-1 transition-colors",
+            "flex items-center gap-1.5 rounded-full border border-edge px-3 py-1 transition-colors",
             isFav ? "bg-gold" : "bg-white hover:bg-sand",
           )}
         >
@@ -247,7 +247,7 @@ export function ProductDetail({
 
       {/* Quantidade + ações */}
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <div className="flex items-center self-start rounded-full border-2 border-ink bg-white">
+        <div className="flex items-center self-start rounded-full border border-edge bg-white">
           <button
             onClick={() => setQty((q) => Math.max(1, q - 1))}
             aria-label="Diminuir"
@@ -255,7 +255,7 @@ export function ProductDetail({
           >
             <Minus className="h-4 w-4" />
           </button>
-          <span className="w-8 text-center font-black">{qty}</span>
+          <span className="w-8 text-center font-semibold">{qty}</span>
           <button
             onClick={() => setQty((q) => q + 1)}
             aria-label="Aumentar"
@@ -280,7 +280,7 @@ export function ProductDetail({
 
       {/* Garantias */}
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
-        <div className="flex items-center gap-3 rounded-2xl border-2 border-ink bg-mint p-4">
+        <div className="flex items-center gap-3 rounded-2xl border border-edge bg-mint p-4">
           <HandHeart className="h-6 w-6 shrink-0" />
           <span className="text-sm font-bold">Feito à mão depois da sua encomenda</span>
         </div>
@@ -288,7 +288,7 @@ export function ProductDetail({
           href={whatsappUrl(`Olá Siomara! Tenho uma dúvida sobre: ${product.name}`)}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 rounded-2xl border-2 border-ink bg-sky p-4 transition-transform hover:-translate-y-0.5"
+          className="flex items-center gap-3 rounded-2xl border border-edge bg-sky p-4 transition-transform hover:-translate-y-0.5"
         >
           <MessageCircleHeart className="h-6 w-6 shrink-0" />
           <span className="text-sm font-bold">
@@ -297,7 +297,7 @@ export function ProductDetail({
         </a>
       </div>
 
-      <div className="mt-8 border-t-2 border-dashed border-ink/20 pt-6">
+      <div className="mt-8 border-t border-dashed border-line pt-6">
         <ShareButtons title={`${product.name} — ${categoryName} · Siomara Acessórios`} />
       </div>
     </div>

@@ -81,7 +81,7 @@ export function AccountPage() {
     <main className="flex-1 py-10 md:py-14">
       <Container>
         <Breadcrumb
-          items={[{ label: "Início", href: "/" }, { label: "Conta" }]}
+          items={[{ label: "Loja", href: "/" }, { label: "Conta" }]}
         />
         {loading ? (
           <p className="mt-10 text-sm text-muted">A carregar…</p>
@@ -144,13 +144,13 @@ function AuthForm() {
       </h1>
 
       {!isFirebaseConfigured && (
-        <p role="status" className="mt-5 rounded-2xl border-2 border-ink bg-butter p-4 text-sm font-bold">
-          As contas ficam ativas em breve ✦ Entretanto pode encomendar sem conta — o pedido segue
+        <p role="status" className="mt-5 rounded-2xl border border-edge bg-butter p-4 text-sm font-bold">
+          As contas ficam ativas em breve Entretanto pode encomendar sem conta — o pedido segue
           pelo WhatsApp na mesma.
         </p>
       )}
 
-      <div className="mt-6 flex rounded-full border-2 border-ink bg-white p-1">
+      <div className="mt-6 flex rounded-full border border-edge bg-white p-1">
         {(["login", "register"] as const).map((m) => (
           <button
             key={m}
@@ -159,7 +159,7 @@ function AuthForm() {
               setError("");
             }}
             className={cn(
-              "flex-1 rounded-full py-2 text-sm font-black transition-colors",
+              "flex-1 rounded-full py-2 text-sm font-semibold transition-colors",
               mode === m ? "bg-ink text-cream" : "text-muted hover:text-ink",
             )}
           >
@@ -172,7 +172,7 @@ function AuthForm() {
         type="button"
         onClick={handleGoogle}
         disabled={busy || !isFirebaseConfigured}
-        className="mt-6 flex w-full items-center justify-center gap-3 rounded-full border-2 border-ink bg-white py-3 text-sm font-medium text-ink transition-colors hover:border-ink disabled:opacity-50"
+        className="mt-6 flex w-full items-center justify-center gap-3 rounded-full border border-edge bg-white py-3 text-sm font-medium text-ink transition-colors hover:border-ink disabled:opacity-50"
       >
         <GoogleIcon className="h-5 w-5" />
         Continuar com Google
@@ -190,7 +190,7 @@ function AuthForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Nome completo"
-            className="h-12 rounded-full border-2 border-ink bg-white px-5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
+            className="h-12 rounded-full border border-edge bg-white px-5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
           />
         )}
         <input
@@ -199,7 +199,7 @@ function AuthForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
-          className="h-12 rounded-full border-2 border-ink bg-white px-5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
+          className="h-12 rounded-full border border-edge bg-white px-5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
         />
         <input
           type="password"
@@ -207,7 +207,7 @@ function AuthForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Palavra-passe (mín. 6 caracteres)"
-          className="h-12 rounded-full border-2 border-ink bg-white px-5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
+          className="h-12 rounded-full border border-edge bg-white px-5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
         />
         {error && <p className="text-sm text-red-500">{error}</p>}
         <button
@@ -257,14 +257,14 @@ function Dashboard({ user }: { user: AuthUser }) {
           {isAdminEmail(user.email) && user.emailVerified && (
             <Link
               href="/admin"
-              className="flex items-center gap-2 rounded-full border-2 border-ink bg-gold px-4 py-1.5 text-sm font-black shadow-[3px_3px_0_var(--color-shadow)]"
+              className="flex items-center gap-2 rounded-full border border-edge bg-gold px-4 py-1.5 text-sm font-semibold shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]"
             >
-              Painel ADM ✦
+              Painel ADM
             </Link>
           )}
           <button
             onClick={() => logout()}
-            className="flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-1.5 text-sm font-black hover:bg-sand"
+            className="flex items-center gap-2 rounded-full border border-edge bg-white px-4 py-1.5 text-sm font-semibold hover:bg-sand"
           >
             <LogOut className="h-4 w-4" />
             Sair
@@ -284,16 +284,16 @@ function Dashboard({ user }: { user: AuthUser }) {
           {loadingOrders ? (
             <p className="mt-4 text-sm text-muted">A carregar pedidos…</p>
           ) : orders.length === 0 ? (
-            <p className="mt-4 rounded-[1.6rem] border-2 border-dashed border-ink/30 bg-white p-8 text-center text-sm text-muted">
+            <p className="mt-4 rounded-2xl border border-dashed border-edge bg-white p-8 text-center text-sm text-muted">
               Ainda não fez nenhum pedido.
             </p>
           ) : (
             <ul className="mt-4 flex flex-col gap-3">
               {orders.map((o) => (
-                <li key={o.id} className="rounded-2xl border-2 border-ink bg-white p-5">
+                <li key={o.id} className="rounded-2xl border border-edge bg-white p-5">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="font-medium text-ink">{o.id}</span>
-                    <span className="rounded-full border-2 border-ink bg-butter px-3 py-0.5 text-xs font-black">
+                    <span className="rounded-full border border-edge bg-butter px-3 py-0.5 text-xs font-semibold">
                       {o.status}
                     </span>
                   </div>
@@ -320,7 +320,7 @@ function Dashboard({ user }: { user: AuthUser }) {
         <aside className="flex flex-col gap-8">
           <Link
             href="/favoritos"
-            className="flex items-center justify-between rounded-2xl border-2 border-ink bg-white p-5 transition-colors hover:border-ink"
+            className="flex items-center justify-between rounded-2xl border border-edge bg-white p-5 transition-colors hover:border-ink"
           >
             <span className="flex items-center gap-2 font-display text-2xl text-ink">
               <Heart className="h-4 w-4 text-gold" /> Favoritos
@@ -340,7 +340,7 @@ function Dashboard({ user }: { user: AuthUser }) {
 
 const genders = ["Feminino", "Masculino", "Outro", "Prefiro não dizer"];
 const inputCls =
-  "mt-1.5 h-11 w-full rounded-full border-2 border-ink bg-white px-4 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40";
+  "mt-1.5 h-11 w-full rounded-full border border-edge bg-white px-4 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40";
 
 function ProfileCard({ user }: { user: AuthUser }) {
   const { updateName } = useAuth();
@@ -373,7 +373,7 @@ function ProfileCard({ user }: { user: AuthUser }) {
   };
 
   return (
-    <section className="rounded-2xl border-2 border-ink bg-white p-6">
+    <section className="rounded-2xl border border-edge bg-white p-6">
       <div className="flex items-center justify-between">
         <h2 className="font-display text-2xl text-ink">O meu perfil</h2>
         {!editing && (
@@ -382,7 +382,7 @@ function ProfileCard({ user }: { user: AuthUser }) {
               setName(user.name);
               setEditing(true);
             }}
-            className="flex items-center gap-1.5 text-sm font-black text-gold-deep hover:underline"
+            className="flex items-center gap-1.5 text-sm font-semibold text-gold-deep hover:underline"
           >
             <Pencil className="h-3.5 w-3.5" /> Editar
           </button>
@@ -530,7 +530,7 @@ function AddressBook({
         {addresses.map((a) => (
           <div
             key={a.id}
-            className="flex items-start justify-between rounded-2xl border-2 border-ink bg-white p-4 text-sm"
+            className="flex items-start justify-between rounded-2xl border border-edge bg-white p-4 text-sm"
           >
             <span className="text-muted">
               {a.line}, {a.city} — {a.province}
@@ -551,24 +551,24 @@ function AddressBook({
         {adding ? (
           <form
             onSubmit={submit}
-            className="flex flex-col gap-2 rounded-2xl border-2 border-ink bg-white p-4"
+            className="flex flex-col gap-2 rounded-2xl border border-edge bg-white p-4"
           >
             <input
               value={form.line}
               onChange={(e) => setForm({ ...form, line: e.target.value })}
               placeholder="Morada"
-              className="h-10 rounded-full border-2 border-ink bg-white px-4 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
+              className="h-10 rounded-full border border-edge bg-white px-4 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
             />
             <input
               value={form.city}
               onChange={(e) => setForm({ ...form, city: e.target.value })}
               placeholder="Cidade"
-              className="h-10 rounded-full border-2 border-ink bg-white px-4 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
+              className="h-10 rounded-full border border-edge bg-white px-4 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
             />
             <select
               value={form.province}
               onChange={(e) => setForm({ ...form, province: e.target.value })}
-              className="h-10 rounded-full border-2 border-ink bg-white px-4 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
+              className="h-10 rounded-full border border-edge bg-white px-4 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
             >
               <option value="">Província…</option>
               {provinces.map((p) => (
@@ -584,7 +584,7 @@ function AddressBook({
         ) : (
           <button
             onClick={() => setAdding(true)}
-            className="flex items-center justify-center gap-2 rounded-[1.6rem] border-2 border-dashed border-ink/30 bg-white py-3 text-sm font-black text-ink/70 transition-colors hover:border-ink hover:text-ink"
+            className="flex items-center justify-center gap-2 rounded-2xl border border-dashed border-edge bg-white py-3 text-sm font-semibold text-ink/70 transition-colors hover:border-ink hover:text-ink"
           >
             <Plus className="h-4 w-4" /> Adicionar endereço
           </button>

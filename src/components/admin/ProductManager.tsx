@@ -112,7 +112,7 @@ export function ProductManager() {
       </div>
 
       {!seeded && !loading && (
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-[1.6rem] border-2 border-ink bg-butter p-5">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-edge bg-butter p-5">
           <p className="text-sm text-ink">
             Os produtos ainda estão no código. Importe-os para a base de dados
             para poder editá-los e guardar.
@@ -127,14 +127,14 @@ export function ProductManager() {
         </div>
       )}
 
-      <div className="mt-6 overflow-hidden rounded-[1.4rem] border-2 border-ink bg-white">
+      <div className="mt-6 overflow-hidden rounded-2xl border border-edge bg-white">
         {products.map((p) => (
           <div
             key={p.id}
             className="flex items-center gap-4 border-b border-line p-3 last:border-b-0"
           >
             <div
-              className="h-14 w-12 shrink-0 rounded-xl border-2 border-ink bg-cover bg-center"
+              className="h-14 w-12 shrink-0 rounded-xl border border-edge bg-cover bg-center"
               style={{ backgroundImage: productCover(p) }}
             />
             <div className="min-w-0 flex-1">
@@ -150,14 +150,14 @@ export function ProductManager() {
             <button
               onClick={() => setEditing({ ...p })}
               aria-label="Editar"
-              className="flex h-9 w-9 items-center justify-center rounded-[1.4rem] border-2 border-ink bg-white text-muted transition-colors hover:border-ink hover:text-ink"
+              className="flex h-9 w-9 items-center justify-center rounded-2xl border border-edge bg-white text-muted transition-colors hover:border-ink hover:text-ink"
             >
               <Pencil className="h-4 w-4" />
             </button>
             <button
               onClick={() => remove(p)}
               aria-label="Apagar"
-              className="flex h-9 w-9 items-center justify-center rounded-[1.4rem] border-2 border-ink bg-white text-muted transition-colors hover:border-red-400 hover:text-red-500"
+              className="flex h-9 w-9 items-center justify-center rounded-2xl border border-edge bg-white text-muted transition-colors hover:border-red-400 hover:text-red-500"
             >
               <Trash2 className="h-4 w-4" />
             </button>
@@ -171,7 +171,7 @@ export function ProductManager() {
 /* ------------------------- Formulário ------------------------- */
 
 const inputCls =
-  "mt-1.5 w-full rounded-2xl border-2 border-ink bg-white px-4 py-2.5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40";
+  "mt-1.5 w-full rounded-2xl border border-edge bg-white px-4 py-2.5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40";
 
 function Field({
   label,
@@ -348,7 +348,7 @@ function ProductForm({
             {p.images.map((img, i) => (
               <div key={i} className="relative h-20 w-16">
                 <div
-                  className="h-full w-full rounded-xl border-2 border-ink bg-cover bg-center"
+                  className="h-full w-full rounded-xl border border-edge bg-cover bg-center"
                   style={{ backgroundImage: `url("${img}")` }}
                 />
                 <button
@@ -365,7 +365,7 @@ function ProductForm({
             <button
               onClick={() => fileRef.current?.click()}
               disabled={uploading}
-              className="flex h-20 w-16 flex-col items-center justify-center gap-1 rounded-[1.6rem] border-2 border-dashed border-ink/30 bg-white text-muted transition-colors hover:border-ink hover:text-ink"
+              className="flex h-20 w-16 flex-col items-center justify-center gap-1 rounded-2xl border border-dashed border-edge bg-white text-muted transition-colors hover:border-ink hover:text-ink"
             >
               {uploading ? (
                 <Loader2 className="h-5 w-5 animate-spin" />
@@ -387,7 +387,7 @@ function ProductForm({
               value={urlInput}
               onChange={(e) => setUrlInput(e.target.value)}
               placeholder="…ou cole o link de uma imagem"
-              className="flex-1 rounded-[1.4rem] border-2 border-ink bg-white bg-cream px-3 py-2 text-sm focus:border-gold focus:outline-none"
+              className="flex-1 rounded-2xl border border-edge bg-white bg-cream px-3 py-2 text-sm focus:border-gold focus:outline-none"
             />
             <button
               onClick={addUrl}

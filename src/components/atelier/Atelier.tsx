@@ -45,7 +45,6 @@ import {
 import { PiecePreview } from "./PiecePreview";
 import { getAtelierPrices } from "@/lib/atelier-prices";
 import { LetterBead, Pearl, StarBead } from "@/components/ui/Beads";
-import { HeartDoodle, SparkleDoodle } from "@/components/ui/Doodles";
 import { WhatsAppIcon } from "@/components/ui/SocialIcons";
 import { buttonClasses } from "@/components/ui/Button";
 import { useCart } from "@/context/CartContext";
@@ -200,7 +199,7 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
     <div className="grid items-start gap-8 lg:grid-cols-[1.08fr_1fr] lg:gap-12">
       {/* ================= PRÉ-VISUALIZAÇÃO ================= */}
       <div className="min-w-0 lg:sticky lg:top-28">
-        <div className="sticker-lg relative overflow-hidden rounded-[2rem] bg-white">
+        <div className="sticker-lg relative overflow-hidden rounded-3xl bg-white">
           <PiecePreview ref={svgRef} design={d} className="block h-auto w-full" />
 
           {/* preço em autocolante */}
@@ -212,10 +211,10 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
             className="sticker absolute right-4 top-4 flex h-24 w-24 flex-col items-center justify-center rounded-full bg-butter text-center text-ink"
           >
             <span className="font-hand text-lg leading-none">só</span>
-            <span className="font-display text-xl font-black leading-tight">{formatPrice(price)}</span>
+            <span className="font-display text-xl font-semibold leading-tight">{formatPrice(price)}</span>
           </motion.div>
 
-          <span className="sticker absolute left-4 top-4 rounded-full bg-gold px-3 py-1 text-xs font-black uppercase tracking-wider text-ink">
+          <span className="sticker absolute left-4 top-4 rounded-full bg-gold px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink">
             Ao vivo
           </span>
         </div>
@@ -242,17 +241,17 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
                 type="button"
                 onClick={() => setType(t.id)}
                 className={cn(
-                  "flex items-center gap-3 rounded-2xl border-2 border-ink p-3 text-left transition-all",
+                  "flex items-center gap-3 rounded-2xl border border-edge p-3 text-left transition-all",
                   d.type === t.id
-                    ? "bg-gold shadow-[3px_3px_0_var(--color-shadow)]"
+                    ? "bg-gold shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]"
                     : "bg-white hover:-translate-y-0.5 hover:bg-sand",
                 )}
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-ink bg-white">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-edge bg-white">
                   {TYPE_ICON[t.id]}
                 </span>
                 <span>
-                  <span className="block text-sm font-black leading-tight">{t.label}</span>
+                  <span className="block text-sm font-semibold leading-tight">{t.label}</span>
                   <span className="block text-xs font-semibold text-ink/60">
                     desde {formatPrice(prices.base[t.id])}
                   </span>
@@ -301,12 +300,12 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
                   onClick={() => set({ letterStyle: l.id })}
                   aria-pressed={d.letterStyle === l.id}
                   className={cn(
-                    "flex items-center gap-1.5 rounded-full border-2 border-ink px-2 py-1 transition-all",
+                    "flex items-center gap-1.5 rounded-full border border-edge px-2 py-1 transition-all",
                     d.letterStyle === l.id ? "bg-ink text-cream" : "bg-white hover:bg-sand",
                   )}
                 >
                   <span
-                    className="flex h-6 w-6 items-center justify-center rounded-full border border-ink/20 text-[11px] font-black"
+                    className="flex h-6 w-6 items-center justify-center rounded-full border border-ink/20 text-[11px] font-semibold"
                     style={{ background: l.bg, color: l.fg }}
                   >
                     A
@@ -321,14 +320,14 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
         {isBracelet && (
           <Step n={3} title="O fio">
             <div className="flex flex-col gap-3">
-              <div className="inline-flex w-fit rounded-full border-2 border-ink bg-white p-1">
+              <div className="inline-flex w-fit rounded-full border border-edge bg-white p-1">
                 {(["cetim", "macrame"] as const).map((m) => (
                   <button
                     key={m}
                     type="button"
                     onClick={() => set({ material: m })}
                     className={cn(
-                      "rounded-full px-4 py-1.5 text-sm font-black transition-colors",
+                      "rounded-full px-4 py-1.5 text-sm font-semibold transition-colors",
                       d.material === m ? "bg-ink text-cream" : "text-ink hover:bg-sand",
                     )}
                   >
@@ -354,14 +353,14 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
                 type="button"
                 onClick={() => set({ preset: pr.id, custom: null })}
                 className={cn(
-                  "flex flex-col gap-2 rounded-2xl border-2 border-ink p-3 text-left transition-all",
+                  "flex flex-col gap-2 rounded-2xl border border-edge p-3 text-left transition-all",
                   d.preset === pr.id && !d.custom
-                    ? "bg-sand shadow-[3px_3px_0_var(--color-shadow)]"
+                    ? "bg-sand shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]"
                     : "bg-white hover:-translate-y-0.5",
                 )}
               >
                 <PresetSample id={pr.id} accent={d.accent} />
-                <span className="text-sm font-black leading-tight">{pr.label}</span>
+                <span className="text-sm font-semibold leading-tight">{pr.label}</span>
                 <span className="text-[11px] font-semibold leading-snug text-ink/60">
                   {pr.hint}
                   {prices.preset[pr.id] ? ` · +${formatPrice(prices.preset[pr.id])}` : ""}
@@ -393,8 +392,8 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
                     : set({ charm: c.id as CharmId })
                 }
                 className={cn(
-                  "rounded-full border-2 border-ink px-4 py-2 text-sm font-black transition-all",
-                  d.charm === c.id ? "bg-gold shadow-[3px_3px_0_var(--color-shadow)]" : "bg-white hover:bg-sand",
+                  "rounded-full border border-edge px-4 py-2 text-sm font-semibold transition-all",
+                  d.charm === c.id ? "bg-gold shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]" : "bg-white hover:bg-sand",
                 )}
               >
                 {c.label}
@@ -438,11 +437,11 @@ export function Atelier({ initialQuery }: { initialQuery: string }) {
         )}
 
         {/* resumo + ações (fixo em baixo no telemóvel) */}
-        <div className="sticker-lg fixed inset-x-3 bottom-3 z-30 rounded-[1.6rem] bg-white p-4 lg:static lg:inset-auto">
+        <div className="sticker-lg fixed inset-x-3 bottom-3 z-30 rounded-2xl bg-white p-4 lg:static lg:inset-auto">
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
-              <p className="truncate text-sm font-black">{designTitle(d)}</p>
-              <p className="font-display text-2xl font-black text-gold-deep">{formatPrice(price)}</p>
+              <p className="truncate text-sm font-semibold">{designTitle(d)}</p>
+              <p className="font-display text-2xl font-semibold text-gold-deep">{formatPrice(price)}</p>
             </div>
             <div className="flex shrink-0 gap-2">
               <a
@@ -488,10 +487,10 @@ function Step({
       layout
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      className="rounded-[1.6rem] border-2 border-ink bg-white/90 p-5"
+      className="rounded-2xl border border-edge bg-white/90 p-5"
     >
       <header className="mb-4 flex flex-wrap items-center gap-3">
-        <span className="sticker flex h-9 w-9 items-center justify-center rounded-full bg-butter font-display text-lg font-black">
+        <span className="sticker flex h-9 w-9 items-center justify-center rounded-full bg-butter font-display text-lg font-semibold">
           {n}
         </span>
         <h2 className="text-2xl">{title}</h2>
@@ -530,13 +529,13 @@ function NameInput({
           placeholder={placeholder}
           maxLength={max}
           autoComplete="off"
-          className="h-12 w-full rounded-full border-2 border-ink bg-sand px-5 font-black uppercase tracking-[0.18em] text-ink placeholder:text-ink/30 focus:bg-white focus:outline-none focus:ring-4 focus:ring-gold/40"
+          className="h-12 w-full rounded-full border border-edge bg-sand px-5 font-semibold uppercase tracking-[0.18em] text-ink placeholder:text-ink/30 focus:bg-white focus:outline-none focus:ring-4 focus:ring-gold/40"
         />
         <button
           type="button"
           onClick={() => onChange(toBeadText(value + "♥", max))}
           aria-label="Acrescentar coração"
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-gold text-lg transition-transform hover:rotate-12 hover:scale-110"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-edge bg-gold text-lg transition-transform hover:scale-110"
         >
           ♥
         </button>
@@ -564,13 +563,13 @@ function Toggle({
     >
       <span
         className={cn(
-          "relative h-7 w-12 shrink-0 rounded-full border-2 border-ink transition-colors",
+          "relative h-7 w-12 shrink-0 rounded-full border border-edge transition-colors",
           checked ? "bg-gold" : "bg-white",
         )}
       >
         <motion.span
           layout
-          className="absolute top-0.5 h-5 w-5 rounded-full border-2 border-ink bg-white"
+          className="absolute top-0.5 h-5 w-5 rounded-full border border-edge bg-white"
           style={{ left: checked ? 22 : 2 }}
         />
       </span>
@@ -599,8 +598,8 @@ function Swatches({
           aria-pressed={value === o.id}
           title={o.label}
           className={cn(
-            "h-10 w-10 rounded-full border-2 border-ink transition-transform hover:scale-110",
-            value === o.id && "scale-110 shadow-[3px_3px_0_var(--color-shadow)] ring-4 ring-gold/50",
+            "h-10 w-10 rounded-full border border-edge transition-transform hover:scale-110",
+            value === o.id && "scale-110 shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] ring-4 ring-gold/50",
           )}
           style={{ background: o.hex }}
         />
@@ -685,7 +684,7 @@ function BeadChip({ b, accent }: { b: Bead; accent: string }) {
       );
     case "charm":
       return (
-        <span className="rounded-full border-2 border-ink bg-[#e9e9ec] px-2 py-1 text-[10px] font-black">
+        <span className="rounded-full border border-edge bg-[#e9e9ec] px-2 py-1 text-[10px] font-semibold">
           {CHARMS.find((c) => c.id === b.charm)?.label}
         </span>
       );
@@ -737,7 +736,7 @@ function FreeEditor({
             type="button"
             whileTap={{ scale: 0.85 }}
             onClick={() => onAdd(p.bead)}
-            className="flex flex-col items-center gap-1 rounded-xl border-2 border-ink/15 bg-cream p-2 text-[10px] font-bold transition-colors hover:border-ink hover:bg-sand"
+            className="flex flex-col items-center gap-1 rounded-xl border border-edge bg-cream p-2 text-[10px] font-bold transition-colors hover:border-ink hover:bg-sand"
           >
             <span className="flex h-8 items-center">
               <BeadChip b={p.bead} accent={accent} />
@@ -761,7 +760,7 @@ function FreeEditor({
           value={letters}
           onChange={(e) => setLetters(toBeadText(e.target.value, 12))}
           placeholder="LETRAS A JUNTAR"
-          className="h-11 w-full rounded-full border-2 border-ink bg-sand px-4 text-sm font-black uppercase tracking-[0.15em] placeholder:text-ink/30 focus:bg-white focus:outline-none"
+          className="h-11 w-full rounded-full border border-edge bg-sand px-4 text-sm font-semibold uppercase tracking-[0.15em] placeholder:text-ink/30 focus:bg-white focus:outline-none"
         />
         <button type="submit" className={buttonClasses("primary", "sm", "h-11 px-5")}>
           Juntar
@@ -774,7 +773,7 @@ function FreeEditor({
           <span>Arraste para mudar a ordem · toque numa peça para a tirar</span>
           <span className={over ? "text-gold-deep" : "text-ink/60"}>{capacity}% do fio</span>
         </div>
-        <div className="h-2.5 overflow-hidden rounded-full border-2 border-ink bg-white">
+        <div className="h-2.5 overflow-hidden rounded-full border border-edge bg-white">
           <motion.div
             className={cn("h-full", over ? "bg-gold-deep" : "bg-gold")}
             animate={{ width: `${Math.min(capacity, 100)}%` }}
@@ -789,7 +788,7 @@ function FreeEditor({
           axis="x"
           values={beads}
           onReorder={onChange}
-          className="mt-3 flex min-h-14 items-center gap-1 overflow-x-auto rounded-2xl border-2 border-dashed border-ink/30 bg-cream px-3 py-3"
+          className="mt-3 flex min-h-14 items-center gap-1 overflow-x-auto rounded-2xl border border-dashed border-edge bg-cream px-3 py-3"
         >
           <AnimatePresence initial={false}>
             {beads.map((b, i) => (
@@ -836,10 +835,6 @@ function FreeEditor({
         </button>
       </div>
 
-      <div className="pointer-events-none flex justify-end gap-2 opacity-80" aria-hidden>
-        <HeartDoodle size={22} />
-        <SparkleDoodle size={22} />
-      </div>
     </div>
   );
 }

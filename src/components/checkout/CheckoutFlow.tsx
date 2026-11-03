@@ -22,7 +22,6 @@ import { siteConfig } from "@/config/site";
 import { productCover } from "@/lib/product-options";
 import { Container } from "@/components/layout/Container";
 import { buttonClasses } from "@/components/ui/Button";
-import { HeartDoodle, SparkleDoodle, StarDoodle } from "@/components/ui/Doodles";
 import { PaymentInfo } from "./PaymentInfo";
 import { HIDDEN_OPTIONS } from "@/components/cart/CartDrawer";
 import { orderWhatsAppUrl } from "@/lib/whatsapp";
@@ -50,7 +49,7 @@ function Field({ label, ...props }: { label: string } & InputHTMLAttributes<HTML
       <span className="text-sm font-bold text-ink/70">{label}</span>
       <input
         {...props}
-        className="mt-1.5 h-12 w-full rounded-full border-2 border-ink bg-white px-5 text-sm font-semibold text-ink placeholder:text-ink/30 focus:outline-none focus:ring-4 focus:ring-gold/40"
+        className="mt-1.5 h-12 w-full rounded-full border border-edge bg-white px-5 text-sm font-semibold text-ink placeholder:text-ink/30 focus:outline-none focus:ring-4 focus:ring-gold/40"
       />
     </label>
   );
@@ -117,40 +116,26 @@ export function CheckoutFlow() {
   if (placed) {
     return (
       <main className="relative flex-1 overflow-hidden py-14 md:py-20">
-        {/* chuva de doodles */}
-        {[...Array(10)].map((_, i) => (
-          <motion.span
-            key={i}
-            className="pointer-events-none absolute top-0"
-            style={{ left: `${(i * 97) % 100}%` }}
-            initial={{ y: -60, rotate: 0, opacity: 0 }}
-            animate={{ y: 520 + (i % 3) * 120, rotate: i % 2 ? 160 : -160, opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 2.6 + (i % 4) * 0.4, delay: i * 0.12, ease: "easeIn" }}
-          >
-            {i % 3 === 0 ? <HeartDoodle size={30} /> : i % 3 === 1 ? <SparkleDoodle size={28} /> : <StarDoodle size={26} />}
-          </motion.span>
-        ))}
-
         <Container className="relative">
           <motion.div
             initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
-            className="mx-auto max-w-lg rounded-[2rem] border-[2.5px] border-ink bg-white p-7 text-center shadow-[8px_8px_0_var(--color-shadow)] md:p-10"
+            className="mx-auto max-w-lg rounded-3xl border border-edge bg-white p-7 text-center shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] md:p-10"
           >
-            <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-ink bg-gold">
+            <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-edge bg-gold">
               <Check className="h-8 w-8" />
             </span>
             <h1 className="mt-5 text-5xl text-ink">Pedido feito!</h1>
             <p className="mt-3 font-semibold text-ink/70">
               Obrigada, {placed.customer.name.split(" ")[0]}! O seu pedido{" "}
-              <span className="rounded-md bg-butter px-1.5 font-black text-ink">{placed.id}</span> foi registado.
+              <span className="rounded-md bg-butter px-1.5 font-semibold text-ink">{placed.id}</span> foi registado.
             </p>
 
-            <div className="mt-7 rounded-2xl border-2 border-dashed border-ink/30 bg-cream p-5 text-left text-sm">
+            <div className="mt-7 rounded-2xl border border-dashed border-edge bg-cream p-5 text-left text-sm">
               <div className="flex justify-between font-bold">
                 <span className="text-ink/60">Total das peças</span>
-                <span className="font-black">{formatPrice(placed.total)}</span>
+                <span className="font-semibold">{formatPrice(placed.total)}</span>
               </div>
               <div className="mt-1.5 flex justify-between font-bold">
                 <span className="text-ink/60">Entrega</span>
@@ -160,7 +145,7 @@ export function CheckoutFlow() {
                 <span className="text-ink/60">Pagamento</span>
                 <span>{placed.payment}</span>
               </div>
-              <div className="mt-4 border-t-2 border-dashed border-ink/20 pt-4">
+              <div className="mt-4 border-t border-dashed border-line pt-4">
                 <p className="font-display text-xl">Como pagar</p>
                 <div className="mt-3">
                   <PaymentInfo method={payment} />
@@ -202,7 +187,7 @@ export function CheckoutFlow() {
     return (
       <main className="flex-1 py-16 md:py-24">
         <Container>
-          <div className="mx-auto max-w-md rounded-[2rem] border-2 border-dashed border-ink/30 bg-white p-10 text-center">
+          <div className="mx-auto max-w-md rounded-3xl border border-dashed border-edge bg-white p-10 text-center">
             <h1 className="text-4xl text-ink">O carrinho está vazio</h1>
             <p className="mt-3 font-semibold text-ink/60">Escolha uma peça na loja ou crie a sua no Atelier.</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
@@ -233,11 +218,11 @@ export function CheckoutFlow() {
                 onClick={() => i < step && setStep(i)}
                 disabled={i > step}
                 className={cn(
-                  "flex items-center gap-2 rounded-full border-2 border-ink px-3 py-1.5 text-sm font-black transition-colors",
-                  i === step ? "bg-gold shadow-[3px_3px_0_var(--color-shadow)]" : i < step ? "bg-mint" : "bg-white text-ink/40",
+                  "flex items-center gap-2 rounded-full border border-edge px-3 py-1.5 text-sm font-semibold transition-colors",
+                  i === step ? "bg-gold shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]" : i < step ? "bg-mint" : "bg-white text-ink/40",
                 )}
               >
-                <span className="flex h-5 w-5 items-center justify-center rounded-full border-2 border-ink bg-white text-[11px]">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full border border-edge bg-white text-[11px]">
                   {i < step ? <Check className="h-3 w-3" /> : i + 1}
                 </span>
                 {s}
@@ -249,7 +234,7 @@ export function CheckoutFlow() {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_380px]">
           {/* Formulário */}
-          <div className="rounded-[2rem] border-2 border-ink bg-white p-6 shadow-[6px_6px_0_var(--color-shadow)] md:p-8">
+          <div className="rounded-3xl border border-edge bg-white p-6 shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] md:p-8">
             {step === 0 && (
               <div className="flex flex-col gap-5">
                 <Field
@@ -280,15 +265,15 @@ export function CheckoutFlow() {
 
             {step === 1 && (
               <div className="flex flex-col gap-5">
-                <p className="rounded-2xl border-2 border-ink bg-butter p-4 text-sm font-bold">
-                  ✦ A taxa e o dia da entrega são combinados consigo pelo WhatsApp.
+                <p className="rounded-2xl border border-edge bg-butter p-4 text-sm font-bold">
+                  A taxa e o dia da entrega são combinados consigo pelo WhatsApp.
                 </p>
                 <label className="block">
                   <span className="text-sm font-bold text-ink/70">Província</span>
                   <select
                     value={address.province}
                     onChange={(e) => setAddress({ ...address, province: e.target.value })}
-                    className="mt-1.5 h-12 w-full rounded-full border-2 border-ink bg-white px-5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
+                    className="mt-1.5 h-12 w-full rounded-full border border-edge bg-white px-5 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-gold/40"
                   >
                     {provinces.map((p) => (
                       <option key={p} value={p}>
@@ -321,20 +306,20 @@ export function CheckoutFlow() {
                     onClick={() => setPayment(id)}
                     aria-pressed={payment === id}
                     className={cn(
-                      "flex items-center gap-4 rounded-2xl border-2 border-ink p-4 text-left transition-all",
-                      payment === id ? "bg-sand shadow-[3px_3px_0_var(--color-shadow)]" : "bg-white hover:bg-cream",
+                      "flex items-center gap-4 rounded-2xl border border-edge p-4 text-left transition-all",
+                      payment === id ? "bg-sand shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]" : "bg-white hover:bg-cream",
                     )}
                   >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-ink bg-white">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-edge bg-white">
                       <Icon className="h-5 w-5" />
                     </span>
                     <span className="flex-1">
-                      <span className="block font-black">{label}</span>
+                      <span className="block font-semibold">{label}</span>
                       <span className="block text-xs font-semibold text-ink/60">{hint}</span>
                     </span>
                     <span
                       className={cn(
-                        "flex h-6 w-6 items-center justify-center rounded-full border-2 border-ink",
+                        "flex h-6 w-6 items-center justify-center rounded-full border border-edge",
                         payment === id ? "bg-gold" : "bg-white",
                       )}
                     >
@@ -385,17 +370,17 @@ export function CheckoutFlow() {
 
           {/* Resumo */}
           <aside className="h-fit lg:sticky lg:top-28">
-            <div className="rounded-[2rem] border-2 border-ink bg-white p-6 shadow-[6px_6px_0_var(--color-shadow)]">
+            <div className="rounded-3xl border border-edge bg-white p-6 shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]">
               <h2 className="font-display text-2xl">O seu pedido</h2>
               <ul className="mt-5 flex flex-col gap-4">
                 {lines.map((l) => (
                   <li key={l.id} className="flex gap-3 text-sm">
                     <span
-                      className="h-14 w-14 shrink-0 rounded-xl border-2 border-ink bg-cover bg-center"
+                      className="h-14 w-14 shrink-0 rounded-xl border border-edge bg-cover bg-center"
                       style={{ backgroundImage: productCover(l.product) }}
                     />
                     <span className="min-w-0 flex-1">
-                      <span className="block font-extrabold leading-tight">
+                      <span className="block font-semibold leading-tight">
                         {l.quantity}× {l.product.name}
                       </span>
                       {l.options && (
@@ -407,11 +392,11 @@ export function CheckoutFlow() {
                         </span>
                       )}
                     </span>
-                    <span className="font-black">{formatPrice(l.product.price * l.quantity)}</span>
+                    <span className="font-semibold">{formatPrice(l.product.price * l.quantity)}</span>
                   </li>
                 ))}
               </ul>
-              <dl className="mt-5 space-y-2 border-t-2 border-dashed border-ink/20 pt-4 text-sm font-bold">
+              <dl className="mt-5 space-y-2 border-t border-dashed border-line pt-4 text-sm font-bold">
                 <div className="flex justify-between">
                   <dt className="text-ink/60">Peças</dt>
                   <dd>{formatPrice(subtotal)}</dd>
@@ -420,9 +405,9 @@ export function CheckoutFlow() {
                   <dt className="text-ink/60">Entrega</dt>
                   <dd>{shippingText(shipping)}</dd>
                 </div>
-                <div className="flex items-center justify-between border-t-2 border-ink pt-3">
+                <div className="flex items-center justify-between border-t border-edge pt-3">
                   <dt className="font-display text-xl">Total</dt>
-                  <dd className="rotate-[-3deg] rounded-full border-2 border-ink bg-butter px-3 py-0.5 font-display text-xl font-black">
+                  <dd className=" rounded-full border border-edge bg-butter px-3 py-0.5 font-display text-xl font-semibold">
                     {formatPrice(total)}
                   </dd>
                 </div>

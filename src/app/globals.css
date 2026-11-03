@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 /* ============================================================
-   SIOMARA ACESSÓRIOS — "Sticker Club", versão boutique
-   Rosas, creme e ameixa; contornos finos cor de ameixa e sombras rosadas
-   (sem arco-íris nem sombras pretas, para não parecer loja de brinquedos).
+   SIOMARA ACESSÓRIOS — boutique feminina
+   Creme, ameixa e rosa de acento; linhas finas, sombras suaves e cantos
+   arredondados. Elegante sem ser fria: caligrafia só no título principal.
    (Os nomes dos tokens vêm da base: "gold" = rosa de acento.)
    ============================================================ */
 
@@ -20,6 +20,7 @@
   --color-line: #f1dae2; /* bordas suaves */
   --color-pearl: #ffffff; /* conta branca */
   --color-shadow: #f0b9cb; /* sombra rosada dos cartões */
+  --color-edge: #e6cbd6; /* linha visível de cartões, campos e botões */
   /* tons de apoio: todos da família do rosa/creme (nomes antigos mantidos) */
   --color-lilac: #ecdcf1; /* lavanda muito clara */
   --color-sky: #f8e3ea; /* blush */
@@ -28,9 +29,10 @@
   --color-peach: #fbe1df; /* pêssego rosado */
 
   /* ---- Tipografia ---- */
-  --font-sans: var(--font-nunito), ui-rounded, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), Georgia, serif;
-  --font-hand: var(--font-caveat), "Comic Sans MS", cursive;
+  /* nome antigo: era a letra manuscrita; agora são etiquetas discretas (ver .font-hand) */
+  --font-hand: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-script: var(--font-greatvibes), "Snell Roundhand", cursive;
 
   /* ---- Cadência de animação ---- */
@@ -80,16 +82,16 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Títulos: Fraunces macia e um pouco "torta" ----------------- */
+/* Títulos: Fraunces clássica ------------------------------------ */
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 620;
-  font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 72;
-  letter-spacing: -0.035em;
-  line-height: 0.98;
+  font-weight: 500;
+  font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 72;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 
 }
@@ -119,29 +121,27 @@ h4 {
 /* Utilitários de marca -------------------------------------- */
 @layer utilities {
   /*
-   * Sobretítulos: em vez de maiúsculas espaçadas (estilo luxo), a Siomara
-   * "escreve à mão", como nos cartões das pulseiras.
-   * shortcut: !important sobrepõe os text-xs/uppercase herdados dos componentes base.
+   * Sobretítulos/etiquetas: pequenos, em maiúsculas espaçadas, rosa profundo.
+   * shortcut: !important sobrepõe os tamanhos grandes que estes elementos tinham
+   * quando eram letra manuscrita; trocar classe a classe se um dia fizer falta.
    */
-  .tracking-luxe {
-    font-family: var(--font-hand);
-    text-transform: none !important;
-    letter-spacing: 0;
-    font-size: 1.35rem !important;
-    line-height: 1.1;
-    font-weight: 600;
+  .tracking-luxe,
+  .font-hand {
+    font-family: var(--font-sans);
+    text-transform: uppercase !important;
+    letter-spacing: 0.16em;
+    font-size: 0.72rem !important;
+    line-height: 1.3;
+    font-weight: 600 !important;
   }
-  /* autocolante: contorno preto + sombra dura */
+  /* cartões: linha fina + sombra suave (antes: contorno grosso e sombra dura) */
   .sticker {
-    border: 2px solid var(--color-ink);
-    box-shadow: 4px 4px 0 var(--color-shadow);
+    border: 1px solid var(--color-edge);
+    box-shadow: 0 10px 28px -18px rgba(59, 34, 48, 0.35);
   }
   .sticker-lg {
-    border: 2.5px solid var(--color-ink);
-    box-shadow: 7px 7px 0 var(--color-shadow);
-  }
-  .font-hand {
-    font-family: var(--font-hand);
+    border: 1px solid var(--color-edge);
+    box-shadow: 0 24px 60px -32px rgba(59, 34, 48, 0.4);
   }
   /* container central padrão do site */
   .container-siomara {

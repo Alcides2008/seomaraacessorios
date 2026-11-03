@@ -24,7 +24,7 @@ export const emptyFilters = (maxPrice: number): Filters => ({
 
 function FilterGroup({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="border-b-2 border-dashed border-ink/15 py-5 first:pt-0">
+    <div className="border-b border-dashed border-line py-5 first:pt-0">
       <h3 className="mb-3 font-display text-xl text-ink">
         {title}
       </h3>
@@ -52,7 +52,7 @@ function CheckRow({
     >
       <span
         className={cn(
-          "flex h-5 w-5 items-center justify-center rounded-md border-2 border-ink transition-colors",
+          "flex h-5 w-5 items-center justify-center rounded-md border border-edge transition-colors",
           checked ? "bg-gold text-ink" : "bg-white group-hover:bg-sand",
         )}
       >
@@ -152,7 +152,7 @@ export function FilterSidebar({
                   aria-label={c.value}
                   title={c.value}
                   className={cn(
-                    "h-8 w-8 rounded-full border-2 border-ink transition-transform hover:scale-110",
+                    "h-8 w-8 rounded-full border border-edge transition-transform hover:scale-110",
                     active && "ring-4 ring-gold/50",
                   )}
                   style={{ backgroundColor: c.hex }}
@@ -199,7 +199,7 @@ export function FilterSidebar({
       <button
         type="button"
         onClick={onClear}
-        className="mt-5 self-start rounded-full border-2 border-ink bg-white px-4 py-1.5 text-sm font-black transition-colors hover:bg-sand"
+        className="mt-5 self-start rounded-full border border-edge bg-white px-4 py-1.5 text-sm font-semibold transition-colors hover:bg-sand"
       >
         Limpar filtros
       </button>

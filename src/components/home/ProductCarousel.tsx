@@ -83,7 +83,7 @@ function CarouselButton({
     <button
       onClick={onClick}
       aria-label={dir === "left" ? "Anterior" : "Seguinte"}
-      className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink bg-white text-ink shadow-[3px_3px_0_var(--color-shadow)] transition-all hover:-translate-y-0.5 hover:bg-gold"
+      className="flex h-11 w-11 items-center justify-center rounded-full border border-edge bg-white text-ink shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] transition-all hover:-translate-y-0.5 hover:bg-gold"
     >
       <Icon className="h-5 w-5" />
     </button>

@@ -35,8 +35,7 @@ export default async function CategoriaPage({
       title={cat.name}
       fixedCategory={cat.slug}
       breadcrumb={[
-        { label: "Início", href: "/" },
-        { label: "Loja", href: "/loja" },
+        { label: "Loja", href: "/" },
         { label: cat.name },
       ]}
     />

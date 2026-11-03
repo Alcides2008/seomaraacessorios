@@ -5,12 +5,9 @@ type Variant = "primary" | "gold" | "outline" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const variants: Record<Variant, string> = {
-  primary:
-    "border-2 border-ink bg-gold text-ink shadow-[4px_4px_0_var(--color-shadow)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--color-shadow)] active:translate-x-1 active:translate-y-1 active:shadow-none",
-  gold:
-    "border-2 border-ink bg-butter text-ink shadow-[4px_4px_0_var(--color-shadow)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--color-shadow)] active:translate-x-1 active:translate-y-1 active:shadow-none",
-  outline:
-    "border-2 border-ink bg-white text-ink shadow-[4px_4px_0_var(--color-shadow)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-sand hover:shadow-[6px_6px_0_var(--color-shadow)] active:translate-x-1 active:translate-y-1 active:shadow-none",
+  primary: "bg-ink text-cream hover:bg-gold-deep",
+  gold: "bg-gold-deep text-white hover:bg-ink",
+  outline: "border border-edge bg-white text-ink hover:border-ink hover:bg-sand",
   ghost: "text-ink hover:bg-ink/5",
 };
 
@@ -27,7 +24,7 @@ export function buttonClasses(
   className?: string,
 ): string {
   return cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-extrabold transition-all duration-200 ease-premium disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-wide transition-all duration-300 ease-premium disabled:pointer-events-none disabled:opacity-50",
     variants[variant],
     sizes[size],
     className,

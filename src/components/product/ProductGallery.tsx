@@ -24,9 +24,9 @@ export function ProductGallery({ images }: { images: string[] }) {
             key={i}
             onClick={() => setActive(i)}
             aria-label={`Imagem ${i + 1}`}
-            className={`h-16 w-16 shrink-0 rounded-xl border-2 border-ink bg-cover bg-center transition-all ${
+            className={`h-16 w-16 shrink-0 rounded-xl border border-edge bg-cover bg-center transition-all ${
               active === i
-                ? "-rotate-3 shadow-[3px_3px_0_var(--color-shadow)] ring-4 ring-gold/50"
+                ? " shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)] ring-4 ring-gold/50"
                 : "opacity-70 hover:opacity-100"
             }`}
             style={{ backgroundImage: g }}
@@ -36,7 +36,7 @@ export function ProductGallery({ images }: { images: string[] }) {
 
       {/* Imagem principal */}
       <div
-        className="relative aspect-square flex-1 cursor-zoom-in overflow-hidden rounded-[2rem] border-[2.5px] border-ink bg-sand shadow-[7px_7px_0_var(--color-shadow)]"
+        className="relative aspect-square flex-1 cursor-zoom-in overflow-hidden rounded-3xl border border-edge bg-sand shadow-[0_12px_32px_-22px_rgba(59,34,48,0.35)]"
         onMouseEnter={() => setZoom(true)}
         onMouseLeave={() => setZoom(false)}
         onMouseMove={onMove}
