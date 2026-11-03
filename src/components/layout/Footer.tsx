@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { getCategories } from "@/lib/categories-db";
 import { Container } from "./Container";
@@ -24,8 +25,7 @@ export async function Footer() {
       <Container className="relative py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="font-script text-5xl leading-none text-champagne">Siomara</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.3em] text-cream/60">Acessórios</p>
+            <Image src="/logo-siomara.png" alt={siteConfig.name} width={900} height={435} className="h-20 w-auto" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/75">
               {siteConfig.tagline}. {siteConfig.description}
             </p>

@@ -11,10 +11,10 @@
   /* ---- Cores da marca ---- */
   --color-ink: #3b2230; /* ameixa — contornos e texto */
   --color-charcoal: #4a2a3b; /* superfícies escuras */
-  --color-cream: #fff8f6; /* papel creme rosado (fundo) */
+  --color-cream: #fefefe; /* fundo do site = fundo do logótipo */
   --color-sand: #fbe7ec; /* rosa pó */
   --color-champagne: #f6cfdb; /* rosa claro */
-  --color-gold: #ea5f93; /* rosa da marca — acento principal */
+  --color-gold: #f180a5; /* rosa do logótipo — acento principal */
   --color-gold-deep: #c13a6f; /* rosa profundo (texto / hover) */
   --color-muted: #806674; /* texto secundário */
   --color-line: #f1dae2; /* bordas suaves */

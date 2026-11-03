@@ -67,15 +67,14 @@ export default function SobrePage() {
         <Container>
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <Reveal>
-              <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-full">
-                <Image
-                  src="/logo-siomara.jpg"
-                  alt="Logótipo da Siomara Acessórios — laço rosa"
-                  fill
-                  sizes="(min-width: 768px) 28rem, 90vw"
-                  className="object-cover"
-                />
-              </div>
+              <Image
+                src="/logo-siomara.png"
+                alt="Logótipo da Siomara Acessórios"
+                width={900}
+                height={435}
+                sizes="(min-width: 768px) 28rem, 90vw"
+                className="mx-auto h-auto w-full max-w-md"
+              />
             </Reveal>
             <Reveal delay={0.1}>
               <span className="tracking-luxe text-xs uppercase text-gold-deep">

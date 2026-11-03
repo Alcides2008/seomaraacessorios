@@ -3,41 +3,18 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 
-/** Logótipo da Siomara: selo do laço + nome em serifada. */
-export function Logo({
-  className,
-  tone = "dark",
-}: {
-  className?: string;
-  tone?: "dark" | "light";
-}) {
+/** Logótipo da Siomara (wordmark rosa com brilhos, fundo transparente). */
+export function Logo({ className }: { className?: string }) {
   return (
-    <Link
-      href="/"
-      aria-label={`${siteConfig.name} — início`}
-      className={cn("group flex items-center gap-3", className)}
-    >
+    <Link href="/" aria-label={`${siteConfig.name} — loja`} className={cn("block", className)}>
       <Image
-        src="/logo-siomara.jpg"
-        alt=""
-        width={44}
-        height={44}
+        src="/logo-siomara.png"
+        alt={siteConfig.name}
+        width={900}
+        height={435}
         priority
-        className="h-10 w-10 rounded-full object-cover ring-1 ring-gold/40 transition-transform duration-500 ease-premium md:h-11 md:w-11"
+        className="h-14 w-auto md:h-16"
       />
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-display text-xl font-semibold italic md:text-2xl",
-            tone === "dark" ? "text-ink" : "text-cream",
-          )}
-        >
-          {siteConfig.shortName}
-        </span>
-        <span className="mt-1 text-[9px] uppercase tracking-[0.32em] text-gold-deep">
-          Acessórios
-        </span>
-      </span>
     </Link>
   );
 }
