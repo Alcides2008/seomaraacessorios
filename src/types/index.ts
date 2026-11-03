@@ -1,5 +1,5 @@
 /* ============================================================
-   DJEYONE — Tipos de domínio
+   Siomara Acessórios — Tipos de domínio
    ============================================================ */
 
 /** As categorias agora são editáveis no painel, por isso o slug é livre. */
